@@ -1,0 +1,36 @@
+{
+  "name": "xaf-crate-reborn",
+  "version": "1.0.0",
+  "description": "CLI for creation main-stack application",
+  "main": "dist/app.js",
+  "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
+  "author": "Егор <ItsAwware@yandex.ru>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "build": "node scripts/build.js",
+    "start": "node dist/app.js",
+    "g-i": "npm install -g .",
+    "update": "npx npm-check-updates -u"
+  },
+  "bin": {
+    "xaf-crate": "dist/app.js",
+    "cva": "dist/app.js"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "esbuild": "^0.14.38",
+    "esbuild-plugin-alias-path": "^1.1.1",
+    "fs-extra": "^10.1.0",
+    "typescript": "^4.6.4",
+    "@types/node": "^17.0.30"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.0.3",
+    "@types/jest": "^27.4.1",
+    "kolorist": "^1.5.1",
+    "minimist": "^1.2.6",
+    "mustache": "^4.2.0",
+    "prompts": "^2.4.2"
+  }
+}

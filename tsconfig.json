@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "allowJs": true,
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "paths": {
+      "~/*": ["src/*"],
+      "~/templates/*": ["templates/*"],
+      "~/packages/*": ["packages/*"]
+    }
+  },
+  "files": ["./src/app.ts"],
+  "exclude": ["node_modules", "dist"]
+}
