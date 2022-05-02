@@ -1,9 +1,9 @@
 const { esbuildPluginAliasPath } = require('esbuild-plugin-alias-path')
 const path = require('path')
 
-const src = path.resolve(__dirname, './src'),
-  templates = path.resolve(__dirname, './templates'),
-  packages = path.resolve(__dirname, './packages')
+const src = path.resolve(__dirname, '../src'),
+  templates = path.resolve(__dirname, '../templates'),
+  packages = path.resolve(__dirname, '../packages')
 
 function createConfig(isDev = true) {
   return {
