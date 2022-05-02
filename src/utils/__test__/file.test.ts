@@ -14,10 +14,9 @@ const makeRelative = (base: string) => {
 }
 
 describe('Комплекс тестов модуля utils/file', () => {
-  const test_field = path.resolve(__dirname, './test-field')
-  const test_field_copy = path.resolve(__dirname, './test-field-copy')
-
-  test('Тест: рекурсивное копирование директории', () => {
+  test('Тест: рекурсивное копирование директории с поддиректориями', () => {
+    const test_field = path.resolve(__dirname, './test-field')
+    const test_field_copy = path.resolve(__dirname, './test-field-copy')
     copy(test_field, test_field_copy)
 
     const src = [...deep_readdir(test_field)].map(makeRelative(test_field))
@@ -27,8 +26,8 @@ describe('Комплекс тестов модуля utils/file', () => {
 
     expect(validate_directory(src, dest)).toBeTruthy()
   })
-
   afterAll(() => {
-    fs.rmdirSync(test_field_copy, { recursive: true })
+    const to_remove = path.resolve(__dirname, './test-field-copy')
+    fs.rmdirSync(to_remove, { recursive: true })
   })
 })
