@@ -9,7 +9,7 @@ const validate_directory = (src: string[], dest: string[]): boolean => {
   )
 }
 
-const makeRelative = (base: string) => {
+const make_relative = (base: string) => {
   return (p) => path.relative(base, p)
 }
 
@@ -19,15 +19,15 @@ describe('Комплекс тестов модуля utils/file', () => {
     const test_field_copy = path.resolve(__dirname, './test-field-copy')
     copy(test_field, test_field_copy)
 
-    const src = [...deep_readdir(test_field)].map(makeRelative(test_field))
+    const src = [...deep_readdir(test_field)].map(make_relative(test_field))
     const dest = [...deep_readdir(test_field_copy)].map(
-      makeRelative(test_field_copy)
+      make_relative(test_field_copy)
     )
 
     expect(validate_directory(src, dest)).toBeTruthy()
   })
   afterAll(() => {
     const to_remove = path.resolve(__dirname, './test-field-copy')
-    fs.rmdirSync(to_remove, { recursive: true })
+    fs.rmSync(to_remove, { recursive: true })
   })
 })

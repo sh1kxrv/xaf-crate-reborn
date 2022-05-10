@@ -1,4 +1,4 @@
-import { bold, magenta, red } from 'kolorist'
+import { bold, magenta, red, yellow } from 'kolorist'
 
 export function log(message: string, prefix: string = '📦', ...args: any[]) {
   console.log(`[${prefix}] ${bold(message)}`, ...args)
@@ -17,5 +17,5 @@ export function info(msg) {
 }
 
 export function warn(msg) {
-  log(msg, '🪐')
+  log(`${yellow(msg)}`, '🪐')
 }
