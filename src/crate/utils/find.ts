@@ -2,17 +2,13 @@ import fs from 'fs'
 import path from 'path'
 
 import { warn } from '~/utils/logger'
-
-export interface AbstractConfig<E> {
-  config: E
-  path: string
-}
+import { AbstractLayer } from '../interfaces/interface.config'
 
 export function find<E>(
   search_directory: string,
   config_name: string
-): AbstractConfig<E>[] {
-  const templates: AbstractConfig<E>[] = []
+): AbstractLayer<E>[] {
+  const templates: AbstractLayer<E>[] = []
   const directories = fs.readdirSync(search_directory)
 
   for (const directory of directories) {

@@ -1,7 +1,6 @@
-type PatchID = string
+import { UnitConfig } from '../interfaces/interface.config'
 
-export interface ProjectConfig {
-  id: string
-  name: string
+type PatchID = string
+export interface ProjectConfig extends UnitConfig {
   patches: PatchID[]
 }

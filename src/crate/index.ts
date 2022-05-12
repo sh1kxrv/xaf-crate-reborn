@@ -1,9 +1,10 @@
 import { Prompt } from '~/prompts/prompt'
-import { AbstractConfig, find } from '~/utils/crate/find'
+import { find } from '~/crate/utils/find'
 import { angry } from '~/utils/logger'
+import { AbstractLayer, UnitConfig } from './interfaces/interface.config'
 
-export class Crate<Config> {
-  protected units: AbstractConfig<Config>[]
+export class Crate<Config extends UnitConfig> {
+  protected units: AbstractLayer<Config>[]
   private prompt: Prompt
 
   constructor(search_path: string, config_name: string) {
@@ -22,6 +23,10 @@ export class Crate<Config> {
       return
     }
     return this.prompt.show()
+  }
+
+  unit(id: string) {
+    return this.units.find((unit) => unit.config.id === id)
   }
 
   async boot(...args: any[]): Promise<void> {}
