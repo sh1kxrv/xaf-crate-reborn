@@ -18,7 +18,7 @@ function create_result(message: string, result: V_RESULT): ValidationResult {
 
 function make_length(min_length: number, max_length: number = 9999) {
   return function (str: string) {
-    return str.length > min_length && str.length < max_length
+    return str.length >= min_length && str.length < max_length
   }
 }
 
@@ -29,7 +29,7 @@ function make_invalid_characters(characters: string[]) {
 }
 
 export function project_name_validation(name: string): ValidationResult {
-  const invalid_characters = [' ', '*', ',', '(', ')']
+  const invalid_characters = [' ', '*', ',', '(', ')', '/', '\\']
   const length_validation = make_length(4, 128)
   const invalid_characters_validation =
     make_invalid_characters(invalid_characters)
