@@ -1,9 +1,9 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import fs from 'fs'
+import path from 'path'
 
 import { warn } from '~/utils/logger'
 
-interface AbstractConfig<E> {
+export interface AbstractConfig<E> {
   config: E
   path: string
 }

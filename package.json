@@ -1,6 +1,6 @@
 {
   "name": "xaf-crate-reborn",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CLI for creation main-stack application",
   "main": "dist/app.js",
   "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
@@ -10,13 +10,13 @@
     "dev": "node scripts/serve.js",
     "build": "node scripts/build.js",
     "start": "node dist/app.js",
+    "build:start": "yarn build && yarn start",
     "g-i": "npm install -g .",
     "update": "npx npm-check-updates -u",
     "test": "jest"
   },
   "bin": {
-    "xaf-crate": "dist/app.js",
-    "cva": "dist/app.js"
+    "xaf-crate-reborn": "dist/app.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",
