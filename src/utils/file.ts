@@ -8,6 +8,8 @@ import path from 'path'
  * @param {string} target
  */
 export function copy(src: string, target: string) {
+  if (!fs.existsSync(target)) fs.mkdirSync(target, { recursive: true })
+
   const files = fs.readdirSync(src)
   for (const file_path of files) {
     const full_path = path.resolve(src, file_path)

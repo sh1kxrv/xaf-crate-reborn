@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "types": ["@types/jest"]
+  },
+  "exclude": ["node_modules", "dist"]
+}

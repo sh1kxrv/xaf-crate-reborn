@@ -3,7 +3,9 @@ import { project_name_validation, V_RESULT } from '../utils/validation'
 import { ProjectConfig } from '~/crate/project/interfaces'
 
 export default function (units: ProjectConfig[]) {
-  const choices = units.map((unit) => create_option(unit.name, unit.id))
+  const choices = units.map((unit) =>
+    create_option(unit.name, unit.id, unit.hidden)
+  )
   return [
     {
       type: 'select',
@@ -16,6 +18,7 @@ export default function (units: ProjectConfig[]) {
       type: 'text',
       name: 'name',
       message: 'Введите наименование проекта',
+      // Todo: Проверка существует ли директория
       validate: (val: string) => {
         const validation_result = project_name_validation(val)
         return validation_result.result === V_RESULT.OK

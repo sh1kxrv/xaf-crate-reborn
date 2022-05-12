@@ -22,7 +22,7 @@ export function find<E>(
     }
 
     const unit_config: E = require(search_path_config)
-    templates.push({ config: unit_config, path: search_path_config })
+    templates.push({ config: unit_config, path: search_path })
   }
   return templates
 }

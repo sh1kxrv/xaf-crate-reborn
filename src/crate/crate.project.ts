@@ -15,15 +15,15 @@ export class CrateProject extends Crate<ProjectConfig> {
     super(templates_path, 'project.options.json')
 
     this.attach_prompt(
-      create_project_prompt(this.units.map((cfg) => cfg.config))
+      create_project_prompt(this.units.map((unit) => unit.config))
     )
   }
   async boot(): Promise<void> {
-    console.log('crate project units:', this.units)
     const prompt_result = await this.show_prompt<ProjectPrompt>()
-    const unit = this.unit(prompt_result.type)
-    const project_helper = new Project(unit)
-    project_helper.pre().scaffold().post().config()
-    console.log(prompt_result)
+
+    const unit_config = this.unit(prompt_result.type)
+    const project = new Project(unit_config, prompt_result.name)
+
+    await project.scaffold()
   }
 }
