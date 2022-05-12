@@ -11,7 +11,7 @@ export class CrateProject extends Crate<PatchConfig> {
     const patches_path = path.resolve(__dirname, '../patches')
     super(patches_path, 'patch.config.json')
   }
-  boot(): void {
+  async boot(): Promise<void> {
     console.log('patches units:', this.units)
   }
 }
