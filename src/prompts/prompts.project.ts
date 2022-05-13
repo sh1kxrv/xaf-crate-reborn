@@ -12,7 +12,6 @@ export default function (units: ProjectConfig[]) {
       name: 'type',
       message: 'Выберите Stack проекта',
       choices,
-      initial: 1,
     },
     {
       type: 'text',

@@ -1,0 +1,14 @@
+{
+  "name": "Jest Patch",
+  "id": "jest-patch",
+  "edit": {
+    "package.json": {
+      "scripts": {
+        "test": "jest"
+      }
+    }
+  },
+  "devInstall": [""],
+  "install": [],
+  "compatibles": null
+}

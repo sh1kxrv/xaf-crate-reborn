@@ -1,6 +1,7 @@
 import _fs from 'fs'
 import _path from 'path'
 import { cwd } from 'process'
+import { XafConfigHandler } from '~/config/config'
 
 import { copy } from '~/utils/file'
 import { AbstractLayer } from '../interfaces/interface.config'
@@ -9,19 +10,26 @@ import { ProjectConfig } from './interfaces'
 import { Processor } from './processors/processor'
 import { PackageProcessor } from './processors/processor.package'
 
+import { CratePatch } from '../crate.patches'
+
 export class Project {
-  private current_working_directory = cwd()
   private preprocessors: Processor[] = []
   private postprocessors: Processor[] = [new PackageProcessor()]
   private project_path: string
+  private config: XafConfigHandler = null
 
   constructor(
     private unit_config: AbstractLayer<ProjectConfig>,
-    private project_name: string
+    private project_name: string,
+    private current_working_directory = cwd()
   ) {
     this.project_path = _path.resolve(
       this.current_working_directory,
       this.project_name
+    )
+    this.config = new XafConfigHandler(
+      this.project_name,
+      this.unit_config.config.id
     )
   }
 
@@ -34,7 +42,10 @@ export class Project {
     await this.pre()
     this.copy()
     await this.post()
-    this.config()
+    this.config.save(this.project_path)
+    // Патч
+    const patch_crate = new CratePatch(this.project_path)
+    await patch_crate.boot()
   }
 
   private pre() {
@@ -54,6 +65,4 @@ export class Project {
       )
     }
   }
-
-  private config() {}
 }
