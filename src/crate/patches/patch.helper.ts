@@ -6,6 +6,8 @@ import { XafConfigHandler } from '~/config/config'
 import { AbstractLayer } from '../interfaces/interface.config'
 import { PatchConfig } from './interfaces'
 import { copy } from '~/utils/file'
+import { initialize } from '~/pm/index'
+import ora from 'ora'
 
 export class Patch {
   constructor(
@@ -66,5 +68,20 @@ export class Patch {
   /**
    * Установка зависимостей
    */
-  private dependencies() {}
+  private async dependencies() {
+    const pm = await initialize()
+    const dependencies = this.unit_config.config?.install ?? []
+    const dev_dependencies = this.unit_config.config?.devInstall ?? []
+
+    const spinner = ora({
+      text: 'Загрузка зависимостей',
+    }).start()
+
+    if (dependencies) await pm.install(dependencies)
+    if (dev_dependencies) await pm.install(dev_dependencies, true)
+
+    spinner.succeed(
+      `Зависимости '${this.unit_config.config.name}' установлены!`
+    )
+  }
 }

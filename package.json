@@ -32,9 +32,11 @@
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.0.3",
     "@types/jest": "^27.4.1",
+    "execa": "^6.1.0",
     "kolorist": "^1.5.1",
     "minimist": "^1.2.6",
     "mustache": "^4.2.0",
+    "ora": "^6.1.0",
     "prompts": "^2.4.2",
     "yargs": "^17.4.1"
   }
