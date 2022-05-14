@@ -18,7 +18,7 @@ export class Patch {
   async patch() {
     this.copy_patch()
     this.edit()
-    this.dependencies()
+    await this.dependencies()
   }
   /**
    * Копирование `patch` директории рядом с конфигом
@@ -77,8 +77,10 @@ export class Patch {
       text: 'Загрузка зависимостей',
     }).start()
 
-    if (dependencies) await pm.install(dependencies)
-    if (dev_dependencies) await pm.install(dev_dependencies, true)
+    if (dependencies)
+      await pm.install(dependencies, false, this.working_directory)
+    if (dev_dependencies)
+      await pm.install(dev_dependencies, true, this.working_directory)
 
     spinner.succeed(
       `Зависимости '${this.unit_config.config.name}' установлены!`

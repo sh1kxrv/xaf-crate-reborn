@@ -26,5 +26,10 @@ export default function (units: ProjectConfig[]) {
       },
       initial: 'my-awesome-project',
     },
+    {
+      type: 'confirm',
+      name: 'patching',
+      message: 'Установка патчей после подготовки шаблона',
+    },
   ]
 }

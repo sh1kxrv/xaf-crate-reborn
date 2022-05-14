@@ -1,4 +1,4 @@
-import { bold, magenta, red, yellow } from 'kolorist'
+import { bold, lightGreen, red, yellow, bgMagenta } from 'kolorist'
 import { version } from '../../package.json'
 
 export function log(message: string, prefix: string = '📦', ...args: any[]) {
@@ -6,7 +6,7 @@ export function log(message: string, prefix: string = '📦', ...args: any[]) {
 }
 
 export function successfully(message) {
-  log(`${magenta(message)} 🪄`, '⭐️')
+  log(`${lightGreen(message)} 🪄`, '⭐️')
 }
 
 export function angry(msg) {
@@ -22,5 +22,5 @@ export function warn(msg) {
 }
 
 export function hello() {
-  log(magenta(`xaf-crate | v${version}`))
+  log(bgMagenta(` xaf-crate | v${version} `))
 }

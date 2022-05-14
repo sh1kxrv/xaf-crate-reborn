@@ -11,6 +11,7 @@ import { Processor } from './processors/processor'
 import { PackageProcessor } from './processors/processor.package'
 
 import { CratePatch } from '../crate.patches'
+import { successfully } from '~/utils/logger'
 
 export class Project {
   private preprocessors: Processor[] = []
@@ -21,6 +22,7 @@ export class Project {
   constructor(
     private unit_config: AbstractLayer<ProjectConfig>,
     private project_name: string,
+    private patching: boolean,
     private current_working_directory = cwd()
   ) {
     this.project_path = _path.resolve(
@@ -43,9 +45,12 @@ export class Project {
     this.copy()
     await this.post()
     this.config.save(this.project_path)
-    // Патч
-    const patch_crate = new CratePatch(this.project_path)
-    await patch_crate.boot()
+    if (this.patching) {
+      // Установка патчей
+      const patch_crate = new CratePatch(this.project_path)
+      await patch_crate.boot()
+    }
+    successfully('Шаблон успешно сгенерирован!')
   }
 
   private pre() {

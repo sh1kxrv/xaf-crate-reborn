@@ -7,6 +7,7 @@ import { Project } from './project/project.helper'
 interface ProjectPrompt {
   type: string
   name: string
+  patching: boolean
 }
 
 export class CrateProject extends Crate<ProjectConfig> {
@@ -23,7 +24,11 @@ export class CrateProject extends Crate<ProjectConfig> {
     if (!prompt_result) return
 
     const unit_config = this.unit(prompt_result.type)
-    const project = new Project(unit_config, prompt_result.name)
+    const project = new Project(
+      unit_config,
+      prompt_result.name,
+      prompt_result.patching
+    )
 
     await project.scaffold()
   }

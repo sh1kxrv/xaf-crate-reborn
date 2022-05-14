@@ -9,8 +9,8 @@ export default function (units: PatchConfig[], template_id: string) {
   })
   return [
     {
-      type: 'select',
-      name: 'patch_id',
+      type: 'multiselect',
+      name: 'patch_ids',
       message: 'Выберите патч',
       choices,
     },

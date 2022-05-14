@@ -11,7 +11,7 @@ import { Patch } from './patches/patch.helper'
 import { successfully } from '~/utils/logger'
 
 interface PatchPrompt {
-  patch_id: string
+  patch_ids: string[]
 }
 
 export class CratePatch extends Crate<PatchConfig> {
@@ -42,9 +42,11 @@ export class CratePatch extends Crate<PatchConfig> {
     const prompt_data = await this.show_prompt<PatchPrompt>()
     if (!prompt_data) return
 
-    const unit_config = this.unit(prompt_data.patch_id)
-    const patch = new Patch(unit_config, this.config, this.working_directory)
-    await patch.patch()
+    for (const patch_id of prompt_data.patch_ids) {
+      const unit_config = this.unit(patch_id)
+      const patch = new Patch(unit_config, this.config, this.working_directory)
+      await patch.patch()
+    }
     successfully('Patched!')
   }
 }
