@@ -41,6 +41,7 @@ export class Patch {
   /**
    * Изменение .json файлов в директории проекта
    * Todo: Поддержка других форматов
+   * Refactor
    */
   private edit() {
     const edit_section = this.unit_config.config.edit
