@@ -28,8 +28,13 @@ export default function (units: ProjectConfig[]) {
     },
     {
       type: 'confirm',
+      name: 'dependencies',
+      message: 'Установить зависимости шаблона?',
+    },
+    {
+      type: 'confirm',
       name: 'patching',
-      message: 'Установка патчей после подготовки шаблона',
+      message: 'Показать возможные патчи шаблона после подготовки?',
     },
   ]
 }

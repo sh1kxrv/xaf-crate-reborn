@@ -1,5 +1,6 @@
 import _path from 'path'
 import _fs from 'fs'
+import { PatchAlreadyInUse } from '~/exceptions/error.patch-already-in-use'
 
 export interface XafConfig {
   installed_patches: string[]
@@ -34,7 +35,7 @@ export class XafConfigHandler {
 
   add_patch(patch_id: string) {
     if (this.config.installed_patches.includes(patch_id))
-      throw Error(`Патч '${patch_id}' уже используется`)
+      throw new PatchAlreadyInUse(patch_id)
     this.config.installed_patches.push(patch_id)
   }
 

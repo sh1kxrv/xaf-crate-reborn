@@ -8,6 +8,8 @@ import { PatchConfig } from './interfaces'
 import { copy } from '~/utils/file'
 import { initialize } from '~/pm/index'
 import ora from 'ora'
+import { read_json, write_json } from '~/utils/json'
+import { angry } from '~/utils/logger'
 
 export class Patch {
   constructor(
@@ -16,9 +18,14 @@ export class Patch {
     private working_directory = cwd()
   ) {}
   async patch() {
-    this.copy_patch()
-    this.edit()
-    await this.dependencies()
+    try {
+      this.project_config.add_patch(this.unit_config.config.id)
+      this.copy_patch()
+      this.edit()
+      await this.dependencies()
+    } catch (err) {
+      angry(err.message)
+    }
   }
   /**
    * Копирование `patch` директории рядом с конфигом
@@ -28,16 +35,6 @@ export class Patch {
     copy(patch_path, this.working_directory)
   }
 
-  private read_json<T = any>(path: string) {
-    const raw = _fs.readFileSync(path, { encoding: 'utf-8' })
-    return JSON.parse(raw) as T
-  }
-
-  private write_json(path: string, json: any) {
-    _fs.writeFileSync(path, JSON.stringify(json, null, 2), {
-      encoding: 'utf-8',
-    })
-  }
   /**
    * Изменение .json файлов в директории проекта
    * Todo: Поддержка других форматов
@@ -46,24 +43,37 @@ export class Patch {
   private edit() {
     const edit_section = this.unit_config.config.edit
     if (!edit_section) return
+    // * Перебор файлов в секции 'edit'
+    // * - relative path: путь до файла относительно корневой директории проекта
     for (const relative_path of Object.keys(edit_section)) {
       const full_path = _path.resolve(this.working_directory, relative_path)
-      const json = this.read_json(full_path)
+      const json = read_json(full_path)
 
-      const section_content = edit_section[relative_path]
-      for (const key of Object.keys(section_content)) {
-        if (!json[key]) {
-          json[key] = edit_section[key]
-        } else {
-          if (typeof json[key] === 'object') {
-            json[key] = { ...json[key], ...section_content[key] }
-          } else if (Array.isArray(json[key])) {
-            json[key].push(...section_content[key])
+      const section_properties = edit_section[relative_path]
+      for (const property_key of Object.keys(section_properties)) {
+        const dest_property = json[property_key]
+
+        if (!dest_property) {
+          json[property_key] = edit_section[property_key]
+          continue
+        }
+
+        const section_property = section_properties[property_key]
+        const is_object = typeof dest_property === 'object'
+        const is_array = Array.isArray(dest_property)
+
+        if (is_object) {
+          const concatinated_property = {
+            ...dest_property,
+            ...section_property,
           }
+          Reflect.set(json, property_key, concatinated_property)
+        } else if (is_array) {
+          json[property_key].push(...section_property)
         }
       }
 
-      this.write_json(full_path, json)
+      write_json(full_path, json)
     }
   }
   /**
@@ -75,7 +85,7 @@ export class Patch {
     const dev_dependencies = this.unit_config.config?.devInstall ?? []
 
     const spinner = ora({
-      text: 'Загрузка зависимостей',
+      text: `Установка патча ${this.unit_config.config.name}`,
     }).start()
 
     if (dependencies)
@@ -83,8 +93,6 @@ export class Patch {
     if (dev_dependencies)
       await pm.install(dev_dependencies, true, this.working_directory)
 
-    spinner.succeed(
-      `Зависимости '${this.unit_config.config.name}' установлены!`
-    )
+    spinner.succeed(`'${this.unit_config.config.name}' установлен!`)
   }
 }

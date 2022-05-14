@@ -5,7 +5,7 @@
     "outDir": "dist",
     "baseUrl": ".",
     "allowJs": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "sourceMap": true,

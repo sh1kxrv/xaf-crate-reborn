@@ -3,11 +3,15 @@ import { Crate } from '.'
 import { ProjectConfig } from './project/interfaces'
 import create_project_prompt from '~/prompts/prompts.project'
 import { Project } from './project/project.helper'
+import { CratePatch } from './crate.patches'
+import ora from 'ora'
+import { initialize } from '~/pm/'
 
 interface ProjectPrompt {
   type: string
   name: string
   patching: boolean
+  dependencies: boolean
 }
 
 export class CrateProject extends Crate<ProjectConfig> {
@@ -23,13 +27,24 @@ export class CrateProject extends Crate<ProjectConfig> {
     const prompt_result = await this.show_prompt<ProjectPrompt>()
     if (!prompt_result) return
 
-    const unit_config = this.unit(prompt_result.type)
-    const project = new Project(
-      unit_config,
-      prompt_result.name,
-      prompt_result.patching
-    )
+    const { patching, dependencies, name } = prompt_result
 
-    await project.scaffold()
+    const unit_config = this.unit(prompt_result.type)
+    const project = new Project(unit_config, name)
+    const { project_path } = await project.scaffold()
+
+    if (dependencies) {
+      const pm = await initialize()
+      const spinner = ora({
+        text: 'Загрузка зависимостей',
+      }).start()
+      await pm.install_only(project_path)
+      spinner.succeed('Загрузка зависимостей завершена')
+    }
+
+    if (patching) {
+      const patch_crate = new CratePatch(project_path)
+      await patch_crate.boot()
+    }
   }
 }

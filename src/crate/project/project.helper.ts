@@ -22,7 +22,6 @@ export class Project {
   constructor(
     private unit_config: AbstractLayer<ProjectConfig>,
     private project_name: string,
-    private patching: boolean,
     private current_working_directory = cwd()
   ) {
     this.project_path = _path.resolve(
@@ -45,12 +44,10 @@ export class Project {
     this.copy()
     await this.post()
     this.config.save(this.project_path)
-    if (this.patching) {
-      // Установка патчей
-      const patch_crate = new CratePatch(this.project_path)
-      await patch_crate.boot()
-    }
     successfully('Шаблон успешно сгенерирован!')
+    return {
+      project_path: this.project_path,
+    }
   }
 
   private pre() {

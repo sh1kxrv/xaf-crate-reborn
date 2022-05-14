@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { magenta } from 'kolorist'
 import { angry, hello } from '~/utils/logger'
 import { CrateProject } from './crate/crate.project'
 import { Crate } from './crate'
+import { CratePatch } from './crate/crate.patches'
 
 const argv = require('minimist')(process.argv.slice(2), { string: ['_'] })
 
 type Crates = {
-  [key: string]: Crate<any>
+  [key: string]: any
 }
 
 async function bootstrap() {
@@ -16,11 +16,12 @@ async function bootstrap() {
   const crate_name = argv._[0] ?? 'project'
 
   const crates: Crates = {
-    project: new CrateProject(),
+    project: CrateProject,
+    patch: CratePatch,
   }
   const crate = crates[crate_name]
   if (crate) {
-    crate.boot()
+    new crate().boot()
   } else angry(`Crate с наименованием '${crate_name}' не существует`)
 }
 
