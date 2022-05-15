@@ -1,5 +1,6 @@
-const { esbuildPluginAliasPath } = require('esbuild-plugin-alias-path')
 const path = require('path')
+
+const { esbuildPluginAliasPath } = require('esbuild-plugin-alias-path')
 
 const src = path.resolve(__dirname, '../src'),
   templates = path.resolve(__dirname, '../templates'),
@@ -13,6 +14,11 @@ function createConfig(isDev = true) {
     minify: !isDev,
     outfile: 'dist/app.js',
     platform: 'node',
+
+    target: 'node14',
+
+    sourcemap: true,
+
     plugins: [
       esbuildPluginAliasPath({
         alias: {
@@ -24,4 +30,5 @@ function createConfig(isDev = true) {
     ],
   }
 }
+
 module.exports = createConfig

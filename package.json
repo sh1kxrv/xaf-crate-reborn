@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "node scripts/serve.js",
     "build": "node scripts/build.js",
-    "start": "node dist/app.js",
+    "start": "node --enable-source-maps dist/app.js",
     "build:start": "yarn build && yarn start",
     "g-i": "npm install -g .",
     "update": "npx npm-check-updates -u",
