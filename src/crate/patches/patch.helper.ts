@@ -10,6 +10,7 @@ import { initialize } from '~/pm/index'
 import ora from 'ora'
 import { read_json, write_json } from '~/utils/json'
 import { angry } from '~/utils/logger'
+import { deep_merge } from '~/utils/'
 
 export class Patch {
   constructor(
@@ -19,9 +20,12 @@ export class Patch {
   ) {}
   async patch() {
     try {
-      this.project_config.add_patch(this.unit_config.config.id)
+      this.project_config
+        .add_patch(this.unit_config.config.id)
+        .save(this.working_directory)
+
       this.copy_patch()
-      this.edit()
+      this.inject()
       await this.dependencies()
     } catch (err) {
       angry(err.message)
@@ -40,40 +44,43 @@ export class Patch {
    * Todo: Поддержка других форматов
    * Refactor
    */
-  private edit() {
-    const edit_section = this.unit_config.config.edit
-    if (!edit_section) return
+  private inject() {
+    const inject_section = this.unit_config.config.inject
+    if (!inject_section) return
     // * Перебор файлов в секции 'edit'
     // * - relative path: путь до файла относительно корневой директории проекта
-    for (const relative_path of Object.keys(edit_section)) {
+    for (const relative_path of Object.keys(inject_section)) {
       const full_path = _path.resolve(this.working_directory, relative_path)
       const json = read_json(full_path)
 
-      const section_properties = edit_section[relative_path]
-      for (const property_key of Object.keys(section_properties)) {
-        const dest_property = json[property_key]
+      const section_properties = inject_section[relative_path]
+      const merged_json = deep_merge(json, section_properties)
 
-        if (!dest_property) {
-          json[property_key] = edit_section[property_key]
-          continue
-        }
+      // FixMe:
+      // for (const property_key of Object.keys(section_properties)) {
+      //   const dest_property = json[property_key]
 
-        const section_property = section_properties[property_key]
-        const is_object = typeof dest_property === 'object'
-        const is_array = Array.isArray(dest_property)
+      //   if (!dest_property) {
+      //     json[property_key] = edit_section[property_key]
+      //     continue
+      //   }
 
-        if (is_object) {
-          const concatinated_property = {
-            ...dest_property,
-            ...section_property,
-          }
-          Reflect.set(json, property_key, concatinated_property)
-        } else if (is_array) {
-          json[property_key].push(...section_property)
-        }
-      }
+      //   const section_property = section_properties[property_key]
+      //   const is_object = typeof dest_property === 'object'
+      //   const is_array = Array.isArray(dest_property)
 
-      write_json(full_path, json)
+      //   if (is_object) {
+      //     const concatinated_property = {
+      //       ...dest_property,
+      //       ...section_property,
+      //     }
+      //     Reflect.set(json, property_key, concatinated_property)
+      //   } else if (is_array) {
+      //     json[property_key].push(...section_property)
+      //   }
+      // }
+
+      write_json(full_path, merged_json)
     }
   }
   /**
