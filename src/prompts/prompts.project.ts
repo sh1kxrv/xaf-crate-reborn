@@ -34,7 +34,7 @@ export default function (units: ProjectConfig[]) {
     {
       type: 'confirm',
       name: 'patching',
-      message: 'Показать возможные патчи шаблона после подготовки?',
+      message: 'Просмотреть лист модификаций данного шаблона?',
     },
   ]
 }
