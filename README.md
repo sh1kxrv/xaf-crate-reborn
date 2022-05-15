@@ -36,3 +36,6 @@ xaf-crate | TS Reborn
   - [ ] Capacitor
 - [ ] Перенос Crate'а tools
   - [ ] index.js | Generator
+  - [ ] Информация о проекте
+    - [ ] Установленные патчи
+    - [ ] ...

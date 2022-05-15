@@ -3,10 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "test": "jest src",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "update": "npx npm-check-updates -u"
+    "update": "npx npm-check-updates -u",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "@babel/core": "^7.17.8",
@@ -17,6 +19,7 @@
     "@types/source-map": "0.5.2",
     "node-sass": "^7.0.1",
     "vue": "^3.2.31",
+    "vue-router": "^4.0.14",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
