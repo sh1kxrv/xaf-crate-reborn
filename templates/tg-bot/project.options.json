@@ -1,4 +1,5 @@
 {
   "id": "tg-bot-js",
-  "name": "Telegram Bot (JS)"
+  "name": "Telegram Bot (JS)",
+  "disabled": true
 }

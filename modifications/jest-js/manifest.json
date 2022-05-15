@@ -1,6 +1,6 @@
 {
-  "name": "Jest JS Patch",
-  "id": "jest-js-patch",
+  "name": "Jest JS",
+  "id": "jest-js-mod",
   "disabled": true,
   "compatibles": ["esbuild-node"]
 }

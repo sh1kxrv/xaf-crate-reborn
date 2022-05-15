@@ -1,27 +1,25 @@
 import _path from 'path'
 import _fs from 'fs'
-import { PatchAlreadyInUse } from '~/exceptions/error.patch-already-in-use'
+import { ModAlreadyInUse } from '~/exceptions/error.patch-already-in-use'
+
+type ModID = string
 
 export interface XafConfig {
-  installed_patches: string[]
+  mods: ModID[]
   project_name: string
   template_id: string
 }
 
 export class XafConfigHandler {
   private config: XafConfig = {
-    installed_patches: [],
+    mods: [],
     project_name: null,
     template_id: null,
   }
-  constructor(
-    project_name: string,
-    template_id: string,
-    installed_patches: string[] = []
-  ) {
+  constructor(project_name: string, template_id: string, mods: string[] = []) {
     this.config.project_name = project_name
     this.config.template_id = template_id
-    this.config.installed_patches = installed_patches
+    this.config.mods = mods
   }
 
   json() {
@@ -33,10 +31,9 @@ export class XafConfigHandler {
     _fs.writeFileSync(config_path, this.json(), { encoding: 'utf-8' })
   }
 
-  add_patch(patch_id: string) {
-    if (this.config.installed_patches.includes(patch_id))
-      throw new PatchAlreadyInUse(patch_id)
-    this.config.installed_patches.push(patch_id)
+  add_mod(mod_id: string) {
+    if (this.config.mods.includes(mod_id)) throw new ModAlreadyInUse(mod_id)
+    this.config.mods.push(mod_id)
     return this
   }
 
@@ -53,7 +50,7 @@ export class XafConfigHandler {
     const cfg = new XafConfigHandler(
       parsed_config.project_name,
       parsed_config.template_id,
-      parsed_config.installed_patches
+      parsed_config.mods
     )
     return cfg
   }

@@ -1,6 +1,6 @@
 {
-  "name": "Jest TS Patch",
-  "id": "jest-ts-patch",
+  "name": "Jest TS",
+  "id": "jest-ts-mod",
   "compatibles": ["esbuild-node"],
   "hidden": true
 }

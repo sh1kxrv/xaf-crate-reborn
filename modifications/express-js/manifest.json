@@ -1,6 +1,6 @@
 {
-  "name": "Express JS Patch",
-  "id": "express-js-patch",
+  "name": "Express + Prisma | JS",
+  "id": "express-js-mod",
   "inject": {
     "package.json": {
       "scripts": {

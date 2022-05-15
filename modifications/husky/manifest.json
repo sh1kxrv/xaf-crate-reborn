@@ -1,6 +1,6 @@
 {
-  "name": "Husky Patch",
-  "id": "husky-patch",
+  "name": "Husky",
+  "id": "husky-mod",
   "inject": {
     "package.json": {
       "scripts": {

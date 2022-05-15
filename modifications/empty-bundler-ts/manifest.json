@@ -1,0 +1,11 @@
+{
+  "name": "Empty Bundler | TS",
+  "id": "empty-bundler-ts",
+  "inject": {
+    "es-xaf.config.json": {
+      "entrypoint": "src/app.ts"
+    }
+  },
+  "install": [],
+  "compatibles": ["esbuild-node"]
+}

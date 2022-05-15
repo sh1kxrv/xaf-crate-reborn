@@ -1,5 +1,5 @@
-export class PatchAlreadyInUse extends Error {
-  constructor(patch_id: string) {
-    super(`Патч '${patch_id}' уже используется`)
+export class ModAlreadyInUse extends Error {
+  constructor(mod_id: string) {
+    super(`Модификация '${mod_id}' уже используется`)
   }
 }

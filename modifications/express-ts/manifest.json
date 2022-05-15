@@ -1,6 +1,6 @@
 {
-  "name": "Express TS Patch",
-  "id": "express-ts-patch",
+  "name": "Express + Prisma | TS",
+  "id": "express-ts-mod",
   "inject": {
     "package.json": {
       "scripts": {
