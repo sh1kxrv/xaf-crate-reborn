@@ -21,7 +21,7 @@ export class Modification {
   async modificate() {
     try {
       this.project_config
-        .add_patch(this.unit_config.config.id)
+        .add_mod(this.unit_config.config.id)
         .save(this.working_directory)
 
       this.copy_mod()
