@@ -1,7 +1,7 @@
 {
   "name": "Husky Patch",
   "id": "husky-patch",
-  "edit": {
+  "inject": {
     "package.json": {
       "scripts": {
         "prepare": "husky install"

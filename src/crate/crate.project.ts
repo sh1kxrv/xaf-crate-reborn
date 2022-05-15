@@ -16,8 +16,7 @@ interface ProjectPrompt {
 
 export class CrateProject extends Crate<ProjectConfig> {
   constructor() {
-    const templates_path = path.resolve(__dirname, '../templates')
-    super(templates_path, 'project.options.json')
+    super('../templates', 'project.options.json')
 
     const units = this.units.map((unit) => unit.config)
     const generated_prompt = create_project_prompt(units)

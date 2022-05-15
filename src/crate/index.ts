@@ -1,3 +1,5 @@
+import _path from 'path'
+
 import { Prompt } from '~/prompts/prompt'
 import { find } from '~/crate/utils/find'
 import { angry } from '~/utils/logger'
@@ -7,8 +9,9 @@ export class Crate<Config extends UnitConfig> {
   protected units: AbstractLayer<Config>[]
   private prompt: Prompt
 
-  constructor(search_path: string, config_name: string) {
-    this.units = find<Config>(search_path, config_name)
+  constructor(search_directory: string, config_name: string) {
+    const search_full_path = _path.resolve(__dirname, search_directory)
+    this.units = find<Config>(search_full_path, config_name)
   }
 
   attach_prompt(prompt_options: any = null) {

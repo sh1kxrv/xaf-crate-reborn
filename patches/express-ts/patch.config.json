@@ -1,0 +1,19 @@
+{
+  "name": "Express TS Patch",
+  "id": "express-ts-patch",
+  "inject": {
+    "package.json": {
+      "scripts": {
+        "migration:dev": "npx prisma migrate dev",
+        "migration:reset": "npx prisma migrate reset",
+        "generate": "npx prisma generate"
+      }
+    },
+    "es-xaf.config.json": {
+      "entrypoint": "src/app.ts"
+    }
+  },
+  "devInstall": ["@types/express"],
+  "install": ["@prisma/client", "dotenv", "express", "prisma"],
+  "compatibles": ["esbuild-node"]
+}

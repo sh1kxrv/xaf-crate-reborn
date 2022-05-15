@@ -1,17 +1,20 @@
 interface ChoiceOption {
   title: string
   value: any
-  disabled: boolean
+  disabled?: boolean
+  description?: string
 }
 
 export function create_option(
   title: string,
   value: any,
-  hidden?: boolean
+  disabled?: boolean,
+  description?: string
 ): ChoiceOption {
   return {
     title,
     value,
-    disabled: hidden,
+    disabled,
+    description,
   }
 }

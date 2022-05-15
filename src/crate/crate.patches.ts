@@ -16,9 +16,7 @@ interface PatchPrompt {
 export class CratePatch extends Crate<PatchConfig> {
   config: XafConfigHandler
   constructor(private working_directory: string = cwd()) {
-    const patches_path = path.resolve(__dirname, '../patches')
-    super(patches_path, 'patch.config.json')
-
+    super('../patches', 'patch.config.json')
     this.config = read_template_config(working_directory)
 
     const units = this.units.map((unit) => unit.config)

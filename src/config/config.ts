@@ -37,10 +37,11 @@ export class XafConfigHandler {
     if (this.config.installed_patches.includes(patch_id))
       throw new PatchAlreadyInUse(patch_id)
     this.config.installed_patches.push(patch_id)
+    return this
   }
 
-  get<T = string>(key: string) {
-    return this.config[key] as T
+  get<T = string>(key: string, defaultValue: T = null) {
+    return (this.config[key] as T) ?? defaultValue
   }
 
   set(key: string, value: any) {

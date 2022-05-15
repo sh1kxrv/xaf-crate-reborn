@@ -4,7 +4,7 @@ import { ProjectConfig } from '~/crate/project/interfaces'
 
 export default function (units: ProjectConfig[]) {
   const choices = units.map((unit) =>
-    create_option(unit.name, unit.id, unit.hidden)
+    create_option(unit.name, unit.id, unit?.disabled, unit?.hint)
   )
   return [
     {

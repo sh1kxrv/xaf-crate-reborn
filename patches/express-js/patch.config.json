@@ -1,0 +1,16 @@
+{
+  "name": "Express JS Patch",
+  "id": "express-js-patch",
+  "inject": {
+    "package.json": {
+      "scripts": {
+        "migration:dev": "npx prisma migrate dev",
+        "migration:reset": "npx prisma migrate reset",
+        "generate": "npx prisma generate"
+      }
+    }
+  },
+  "devInstall": ["@types/express"],
+  "install": ["@prisma/client", "dotenv", "express", "prisma"],
+  "compatibles": ["esbuild-node"]
+}
