@@ -30,10 +30,16 @@ xaf-crate | TS Reborn
   - [x] Декларативный подход ( .json файлы около шаблона с конфигурацией )
 - [x] Система модификаций ( интеграция husky/jest/etc в определенный шаблон )
   - [x] `project.options.json` - `entries`
+  - [x] Отслеживание конфликотов модификаций
 - [ ] Перенос Swagger-Codegen ( OpenAPI + Swagger )
 - [ ] Перенос интеграций платформ ( отныне модификации могут и в интеграции платформ )
   - [ ] Electron
   - [ ] Capacitor
+- [ ] Перенос шаблонов
+  - [x] Express
+  - [x] ESBuild
+  - [x] Vue3
+  - [ ] Monorepo + Shared-library
 - [ ] Перенос Crate'а tools
   - [ ] index.js | Generator
   - [ ] Информация о проекте

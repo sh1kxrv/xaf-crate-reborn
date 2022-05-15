@@ -8,12 +8,12 @@ import create_patch_prompt from '~/prompts/prompts.modification'
 import { Modification } from './modification/modification.helper'
 import { read_template_config } from './utils/template'
 import { angry } from '~/utils/logger'
-import { AbstractLayer } from './interfaces/interface.config'
 
 interface ModificationPrompt {
   mod_ids: string[]
 }
 
+// Refactor: To Utils
 interface CheckResult {
   ok: boolean
   unit: ModificationConfig | null
