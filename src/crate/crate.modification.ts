@@ -57,12 +57,9 @@ export class CrateModification extends Crate<ModificationConfig> {
 
     const { ok, unit } = this.conflicts_checker(prompt_data.mod_ids)
     if (!ok) {
+      const conflicts = unit.conflicts.join(' ')
       angry(
-        `Вы указали конфликтующие модификации '${
-          unit.id
-        }:: ${unit.conflicts.join(
-          ' '
-        )}', ещё раз проверьте указанные вами модификации`
+        `Замечены конфликтующие модификации '${unit.id}:: ${conflicts}', ещё раз проверьте указанные вами модификации`
       )
       return
     }
