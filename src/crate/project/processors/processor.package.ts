@@ -4,7 +4,8 @@ import { Processor } from './processor'
 
 import _path from 'path'
 import _fs from 'fs'
-import { angry } from '~/utils/logger'
+import { read_json, write_json } from '~/utils/json'
+import { FileNotFoundError } from '~/exceptions/error.file-not-found'
 
 export class PackageProcessor extends Processor {
   async process(
@@ -14,18 +15,12 @@ export class PackageProcessor extends Processor {
   ): Promise<void> {
     const package_json_path = _path.resolve(project_path, 'package.json')
     if (!_fs.existsSync(package_json_path)) {
-      angry(`package.json не найден | '${package_json_path}'`)
-      return
+      throw new FileNotFoundError(package_json_path)
     }
 
     // Todo: Типизация package.json
-    const parsed_package_json: any = require(package_json_path)
-    parsed_package_json.name = project_name
-
-    const stringified = JSON.stringify(parsed_package_json, null, 2)
-
-    _fs.writeFileSync(package_json_path, stringified, {
-      encoding: 'utf-8',
-    })
+    const json = read_json(package_json_path)
+    json.name = project_name
+    write_json(package_json_path, json)
   }
 }
