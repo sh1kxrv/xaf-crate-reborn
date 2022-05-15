@@ -15,5 +15,6 @@
   },
   "devInstall": ["@types/express"],
   "install": ["@prisma/client", "dotenv", "express", "prisma"],
-  "compatibles": ["esbuild-node"]
+  "compatibles": ["esbuild-node"],
+  "conflicts": ["express-js-mod", "empty-bundler-js", "empty-bundler-ts"]
 }

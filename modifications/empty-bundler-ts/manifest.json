@@ -7,5 +7,6 @@
     }
   },
   "install": [],
-  "compatibles": ["esbuild-node"]
+  "compatibles": ["esbuild-node"],
+  "conflicts": ["express-js-mod", "express-ts-mod", "empty-bundler-js"]
 }

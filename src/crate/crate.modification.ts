@@ -1,4 +1,3 @@
-import path from 'path'
 import { cwd } from 'process'
 
 import { Crate } from '.'
@@ -8,9 +7,16 @@ import { XafConfigHandler } from '~/config/config'
 import create_patch_prompt from '~/prompts/prompts.modification'
 import { Modification } from './modification/modification.helper'
 import { read_template_config } from './utils/template'
+import { angry } from '~/utils/logger'
+import { AbstractLayer } from './interfaces/interface.config'
 
 interface ModificationPrompt {
   mod_ids: string[]
+}
+
+interface CheckResult {
+  ok: boolean
+  unit: ModificationConfig | null
 }
 
 export class CrateModification extends Crate<ModificationConfig> {
@@ -27,12 +33,42 @@ export class CrateModification extends Crate<ModificationConfig> {
     this.attach_prompt(generated_prompt)
   }
 
+  private conflicts_checker(mod_ids: string[]): CheckResult {
+    const units = mod_ids.map((id) => this.unit(id).config)
+    for (const unit of units) {
+      const conflict = units.some(
+        (u) => u.conflicts?.includes(unit.id) ?? false
+      )
+      if (conflict)
+        return {
+          unit,
+          ok: false,
+        }
+    }
+    return {
+      unit: null,
+      ok: true,
+    }
+  }
+
   async boot(): Promise<void> {
     const prompt_data = await this.show_prompt<ModificationPrompt>()
     if (!prompt_data) return
 
-    for (const patch_id of prompt_data.mod_ids) {
-      const unit_config = this.unit(patch_id)
+    const { ok, unit } = this.conflicts_checker(prompt_data.mod_ids)
+    if (!ok) {
+      angry(
+        `Вы указали конфликтующие модификации '${
+          unit.id
+        }:: ${unit.conflicts.join(
+          ' '
+        )}', ещё раз проверьте указанные вами модификации`
+      )
+      return
+    }
+
+    for (const mod_id of prompt_data.mod_ids) {
+      const unit_config = this.unit(mod_id)
       const modificator = new Modification(
         unit_config,
         this.config,

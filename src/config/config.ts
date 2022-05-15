@@ -1,6 +1,6 @@
 import _path from 'path'
 import _fs from 'fs'
-import { ModAlreadyInUse } from '~/exceptions/error.patch-already-in-use'
+import { ModAlreadyInUse } from '~/exceptions/error.mod-already-in-use'
 
 type ModID = string
 

@@ -42,7 +42,6 @@ export class Modification {
   /**
    * Изменение .json файлов в директории проекта
    * Todo: Поддержка других форматов
-   * Refactor
    */
   private inject() {
     const inject_section = this.unit_config.config.inject
@@ -68,7 +67,7 @@ export class Modification {
     const dev_dependencies = this.unit_config.config?.devInstall ?? []
 
     const spinner = ora({
-      text: `Установка модификации ::'${this.unit_config.config.name}'`,
+      text: `Установка модификации:: '${this.unit_config.config.name}'`,
     }).start()
 
     if (dependencies)

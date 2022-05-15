@@ -10,4 +10,5 @@ export interface ModificationConfig {
   devInstall: Dependency[]
   install: Dependency[]
   compatibles: string[] | string
+  conflicts?: string[]
 }
