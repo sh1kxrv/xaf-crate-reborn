@@ -3,7 +3,7 @@ type Inject = {
 }
 
 type Dependency = string
-export interface PatchConfig {
+export interface ModificationConfig {
   id: string
   name: string
   inject?: Inject

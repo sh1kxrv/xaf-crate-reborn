@@ -10,7 +10,6 @@ import { ProjectConfig } from './interfaces'
 import { Processor } from './processors/processor'
 import { PackageProcessor } from './processors/processor.package'
 
-import { CratePatch } from '../crate.patches'
 import { successfully } from '~/utils/logger'
 
 export class Project {
@@ -44,7 +43,7 @@ export class Project {
     this.copy()
     await this.post()
     this.config.save(this.project_path)
-    successfully('Шаблон успешно сгенерирован!')
+    successfully('Шаблон успешно создан!')
     return {
       project_path: this.project_path,
     }

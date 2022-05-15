@@ -1,7 +1,7 @@
 import { create_option } from './helper'
-import { PatchConfig } from '~/crate/patches/interfaces'
+import { ModificationConfig } from '~/crate/modification/interfaces'
 
-export default function (units: PatchConfig[], template_id: string) {
+export default function (units: ModificationConfig[], template_id: string) {
   const choices = units
     .map((unit) => {
       const compatible_check =
@@ -12,9 +12,10 @@ export default function (units: PatchConfig[], template_id: string) {
   return [
     {
       type: 'multiselect',
-      name: 'patch_ids',
-      message: 'Выберите патч',
+      name: 'mod_ids',
+      message: 'Выберите модификацию(и)',
       choices,
+      instructions: false,
     },
   ]
 }

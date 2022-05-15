@@ -5,6 +5,7 @@ import { find } from '~/crate/utils/find'
 import { angry } from '~/utils/logger'
 import { AbstractLayer, UnitConfig } from './interfaces/interface.config'
 
+// Refactor
 export class Crate<Config extends UnitConfig> {
   protected units: AbstractLayer<Config>[]
   private prompt: Prompt

@@ -2,21 +2,21 @@ import path from 'path'
 import { cwd } from 'process'
 
 import { Crate } from '.'
-import { PatchConfig } from './patches/interfaces'
+import { ModificationConfig } from './modification/interfaces'
 import { XafConfigHandler } from '~/config/config'
 
-import create_patch_prompt from '~/prompts/prompts.patch'
-import { Patch } from './patches/patch.helper'
+import create_patch_prompt from '~/prompts/prompts.modification'
+import { Modification } from './modification/modification.helper'
 import { read_template_config } from './utils/template'
 
-interface PatchPrompt {
-  patch_ids: string[]
+interface ModificationPrompt {
+  mod_ids: string[]
 }
 
-export class CratePatch extends Crate<PatchConfig> {
+export class CrateModification extends Crate<ModificationConfig> {
   config: XafConfigHandler
   constructor(private working_directory: string = cwd()) {
-    super('../patches', 'patch.config.json')
+    super('../modifications', 'manifest.json')
     this.config = read_template_config(working_directory)
 
     const units = this.units.map((unit) => unit.config)
@@ -28,13 +28,17 @@ export class CratePatch extends Crate<PatchConfig> {
   }
 
   async boot(): Promise<void> {
-    const prompt_data = await this.show_prompt<PatchPrompt>()
+    const prompt_data = await this.show_prompt<ModificationPrompt>()
     if (!prompt_data) return
 
-    for (const patch_id of prompt_data.patch_ids) {
+    for (const patch_id of prompt_data.mod_ids) {
       const unit_config = this.unit(patch_id)
-      const patch = new Patch(unit_config, this.config, this.working_directory)
-      await patch.patch()
+      const modificator = new Modification(
+        unit_config,
+        this.config,
+        this.working_directory
+      )
+      await modificator.modificate()
     }
   }
 }

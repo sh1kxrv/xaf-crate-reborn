@@ -3,7 +3,7 @@ import { Crate } from '.'
 import { ProjectConfig } from './project/interfaces'
 import create_project_prompt from '~/prompts/prompts.project'
 import { Project } from './project/project.helper'
-import { CratePatch } from './crate.patches'
+import { CrateModification } from './crate.modification'
 import ora from 'ora'
 import { initialize } from '~/pm/'
 
@@ -42,7 +42,7 @@ export class CrateProject extends Crate<ProjectConfig> {
     }
 
     if (patching) {
-      const patch_crate = new CratePatch(project_path)
+      const patch_crate = new CrateModification(project_path)
       await patch_crate.boot()
     }
   }

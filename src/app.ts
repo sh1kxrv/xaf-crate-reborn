@@ -2,8 +2,7 @@
 
 import { angry, hello } from '~/utils/logger'
 import { CrateProject } from './crate/crate.project'
-import { Crate } from './crate'
-import { CratePatch } from './crate/crate.patches'
+import { CrateModification } from './crate/crate.modification'
 
 const argv = require('minimist')(process.argv.slice(2), { string: ['_'] })
 
@@ -17,11 +16,15 @@ async function bootstrap() {
 
   const crates: Crates = {
     project: CrateProject,
-    patch: CratePatch,
+    mod: CrateModification,
   }
   const crate = crates[crate_name]
   if (crate) {
-    new crate().boot()
+    try {
+      new crate().boot()
+    } catch (err) {
+      angry(err.message)
+    }
   } else angry(`Crate с наименованием '${crate_name}' не существует`)
 }
 
