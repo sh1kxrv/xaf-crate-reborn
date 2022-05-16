@@ -2,6 +2,19 @@
 
 xaf-crate | TS Reborn
 
+## Установка
+
+...
+
+## Аргументы
+
+- xaf-crate
+  - project > создание шаблона
+  - mod > установка модификаций текущего шаблона
+  - tools
+    - api > генерация swagger/openapi рутов
+    - index > генерация index файла около другие файлов
+
 ## Что нового?
 
 - Новая система создания шаблонов
@@ -37,6 +50,9 @@ xaf-crate | TS Reborn
   - [ ] Capacitor
 - [ ] Перенос шаблонов
   - [x] Express
+    - [x] Prisma
+    - [ ] TypeORM
+      - [ ] https://github.com/IRCraziestTaxi/typeorm-linq-repository
   - [x] ESBuild
   - [x] Vue3
   - [ ] Monorepo + Shared-library
