@@ -16,7 +16,7 @@
     "test": "jest"
   },
   "bin": {
-    "xaf-crate-reborn": "dist/app.js"
+    "xfcr": "dist/app.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",

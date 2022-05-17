@@ -1,0 +1,18 @@
+{
+  "name": "Express + TypeORM | TS",
+  "id": "express-ts-typeorm-mod",
+  "inject": {
+    "es-xaf.config.json": {
+      "entrypoint": "src/app.ts"
+    }
+  },
+  "devInstall": ["@types/express"],
+  "install": ["typeorm", "reflect-metadata", "mysql", "express", "kolorist"],
+  "compatibles": ["esbuild-node"],
+  "conflicts": [
+    "express-js-mod",
+    "express-ts-mod",
+    "empty-bundler-js",
+    "empty-bundler-ts"
+  ]
+}

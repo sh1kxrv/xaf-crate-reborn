@@ -1,6 +1,6 @@
 {
-  "name": "Jest Vue3 Patch",
-  "id": "jest-vue3-patch",
+  "name": "Jest Vue3",
+  "id": "jest-vue3-mod",
   "inject": {
     "package.json": {
       "scripts": {

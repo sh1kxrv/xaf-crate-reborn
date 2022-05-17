@@ -16,6 +16,9 @@ let process = null
       interval: 0, // No delay
       ignoreInitial: true,
     })
+    .on('ready', () => {
+      process = spawn('node', ['dist/app.js'], { stdio: 'inherit' })
+    })
     .on('all', async () => {
       if (process && !process.killed) process.kill()
       await builder.rebuild()

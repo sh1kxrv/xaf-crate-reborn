@@ -1,6 +1,7 @@
 const path = require('path')
 const { entrypoint } = require('../es-xaf.config.json')
 const { esbuildPluginAliasPath } = require('esbuild-plugin-alias-path')
+const { esbuildPluginDecorator } = require('esbuild-plugin-decorator')
 
 const src = path.resolve(__dirname, '../src')
 
