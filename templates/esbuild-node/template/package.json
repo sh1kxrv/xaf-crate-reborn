@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "node scripts/serve.js",
     "build": "node scripts/build.js",
+    "build:start": "yarn build && yarn start",
     "start": "node --enable-source-maps dist/app.js"
   },
   "devDependencies": {

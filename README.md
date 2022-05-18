@@ -50,10 +50,7 @@ xaf-crate | TS Reborn
   - [ ] Capacitor
 - [ ] Перенос шаблонов
   - [x] Express
-    - [x] Prisma
-    - [ ] TypeORM
-      - [ ] https://github.com/IRCraziestTaxi/typeorm-linq-repository
-    - [ ] Sequalize ORM
+    - [x] Sequalize ORM
   - [x] ESBuild
   - [x] Vue3
   - [ ] Monorepo + Shared-library

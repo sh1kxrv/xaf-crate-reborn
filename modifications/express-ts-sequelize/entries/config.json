@@ -1,0 +1,7 @@
+{
+  "PORT": 1337,
+  "rate_limit": {
+    "max": 5,
+    "delay": 5
+  }
+}
