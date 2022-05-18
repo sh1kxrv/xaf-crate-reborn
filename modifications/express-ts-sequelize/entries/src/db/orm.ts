@@ -1,6 +1,6 @@
 import path from 'path'
 import { Sequelize } from 'sequelize-typescript'
-import db_config from '../db/db.config.json'
+import db_config from './db.config.json'
 
 export class ConnectionOptions {
   constructor(
