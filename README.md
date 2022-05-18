@@ -53,6 +53,7 @@ xaf-crate | TS Reborn
     - [x] Prisma
     - [ ] TypeORM
       - [ ] https://github.com/IRCraziestTaxi/typeorm-linq-repository
+    - [ ] Sequalize ORM
   - [x] ESBuild
   - [x] Vue3
   - [ ] Monorepo + Shared-library
