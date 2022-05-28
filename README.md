@@ -48,12 +48,18 @@ xaf-crate | TS Reborn
 - [ ] Перенос интеграций платформ ( отныне модификации могут и в интеграции платформ )
   - [ ] Electron
   - [ ] Capacitor
+  - [ ] Tauri
 - [ ] Перенос шаблонов
   - [x] Express
     - [x] Sequalize ORM
   - [x] ESBuild
   - [x] Vue3
+    - [ ] Migrate to Pinia from Vuex
+    - [ ] Переписать систему Middleware
+      - [ ] Добавить приоритетность ( возможно сделать с помощью LinkedList )
   - [ ] Monorepo + Shared-library
+    - [ ] Lerna ?
+    - [ ] PNPM ?
 - [ ] Перенос Crate'а tools
   - [ ] index.js | Generator
   - [ ] Информация о проекте
