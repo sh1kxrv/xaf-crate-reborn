@@ -1,0 +1,8 @@
+{
+  "name": "Vue3 Middleware Extension",
+  "id": "vue3-middleware-mod",
+  "inject": {},
+  "devInstall": [],
+  "install": [],
+  "compatibles": ["vue3-plate-lite", "vue3-plate"]
+}

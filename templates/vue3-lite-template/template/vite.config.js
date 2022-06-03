@@ -18,6 +18,8 @@ export default defineConfig({
       scss: {
         additionalData: `
           @import '~/assets/styles/variables';
+          @import '~/assets/styles/mixins';
+          @import '~/assets/styles/typography';
         `,
       },
     },

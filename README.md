@@ -55,7 +55,7 @@ xaf-crate | TS Reborn
   - [x] ESBuild
   - [x] Vue3
     - [ ] Migrate to Pinia from Vuex
-    - [ ] Переписать систему Middleware
+    - [x] Переписать систему Middleware
       - [ ] Добавить приоритетность ( возможно сделать с помощью LinkedList )
   - [ ] Monorepo + Shared-library
     - [ ] Lerna ?
