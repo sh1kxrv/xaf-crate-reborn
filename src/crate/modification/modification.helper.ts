@@ -63,8 +63,19 @@ export class Modification {
    */
   private async dependencies() {
     const pm = await initialize()
+
+    const execute_commands = async (commands: string[]) => {
+      for (const command of commands) {
+        await pm.execute(command)
+      }
+    }
+
     const dependencies = this.unit_config.config?.install ?? []
     const dev_dependencies = this.unit_config.config?.devInstall ?? []
+    const commands_before_install =
+      this.unit_config.config?.commands_before_install ?? []
+    const commands_after_install =
+      this.unit_config.config?.commands_after_install ?? []
 
     const spinner = ora({
       text: `Установка модификации:: '${this.unit_config.config.name}'`,
@@ -74,6 +85,12 @@ export class Modification {
       await pm.install(dependencies, false, this.working_directory)
     if (dev_dependencies)
       await pm.install(dev_dependencies, true, this.working_directory)
+    if (commands_before_install) {
+      await execute_commands(commands_before_install)
+    }
+    if (commands_after_install) {
+      await execute_commands(commands_after_install)
+    }
 
     spinner.succeed(
       `Модификация '${this.unit_config.config.name}' установлена!`

@@ -10,6 +10,8 @@ type Crates = {
   [key: string]: any
 }
 
+// Todo: Переписать bootstrap на считывание команд а только потом уже запускать крейт или что-то другое
+
 async function bootstrap() {
   hello()
   const crate_name = argv._[0] ?? 'project'

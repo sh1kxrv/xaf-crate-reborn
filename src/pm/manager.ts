@@ -26,5 +26,12 @@ export class Manager {
       reject: false,
     })
   }
+  execute(command, working_directory = cwd()) {
+    return execa(`${this.package_manager} ${command}`, [], {
+      cwd: working_directory,
+      buffer: false,
+      reject: false,
+    })
+  }
   uninstall(packages: string[]) {}
 }

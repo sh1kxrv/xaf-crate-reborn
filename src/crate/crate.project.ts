@@ -1,11 +1,11 @@
-import path from 'path'
 import { Crate } from '.'
 import { ProjectConfig } from './project/interfaces'
-import create_project_prompt from '~/prompts/prompts.project'
 import { Project } from './project/project.helper'
 import { CrateModification } from './crate.modification'
-import ora from 'ora'
 import { initialize } from '~/pm/'
+
+import create_project_prompt from '~/prompts/prompts.project'
+import ora from 'ora'
 
 interface ProjectPrompt {
   type: string

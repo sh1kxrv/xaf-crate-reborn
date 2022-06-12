@@ -11,4 +11,6 @@ export interface ModificationConfig {
   install: Dependency[]
   compatibles: string[] | string
   conflicts?: string[]
+  commands_before_install?: string[]
+  commands_after_install?: string[]
 }
