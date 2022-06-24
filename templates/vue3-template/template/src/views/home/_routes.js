@@ -1,7 +1,8 @@
+import View from './view.vue'
 export default [
   {
     path: '/',
     name: 'Home',
-    component: () => import('./view.vue'),
+    component: View,
   },
 ]

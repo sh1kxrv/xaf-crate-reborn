@@ -2,7 +2,7 @@
 
 ```js
 // middleware.js
-export default ({ to, from, next, store, redirect }) => {
+export default ({ to, from, next, redirect }) => {
   // Some business logic
 }
 

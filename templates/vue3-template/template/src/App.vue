@@ -1,22 +1,16 @@
-<script>
+<script setup>
 import LayoutDefault from '~/layout/default.vue'
-
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-export default {
-  components: {
-    LayoutDefault,
-  },
-  setup() {
-    const route = useRoute()
-    const computedLayout = computed(() => {
-      return `layout-${route.meta.layout || 'default'}`
-    })
-    return {
-      computedLayout,
-    }
-  },
+
+const layouts = {
+  default: LayoutDefault,
 }
+
+const route = useRoute()
+const computedLayout = computed(() => {
+  return layouts[route.meta.layout || 'default']
+})
 </script>
 
 <template>

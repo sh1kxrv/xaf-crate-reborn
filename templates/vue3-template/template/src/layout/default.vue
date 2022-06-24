@@ -1,9 +1,4 @@
-<script>
-export default {
-  name: 'LayoutDefault',
-  setup(props) {},
-}
-</script>
+<script setup></script>
 
 <template>
   <div class="layout">
