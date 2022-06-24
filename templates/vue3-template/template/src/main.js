@@ -4,9 +4,11 @@ import { createPinia } from 'pinia'
 import router from './router'
 import IconWrapper from '~/components/icon-wrapper.vue'
 import App from './App.vue'
+import { createMiddleware } from './_middleware'
 
 import InitializeViews from '~/views'
-InitializeViews(router, store)
+InitializeViews(router)
+createMiddleware(router)
 
 const pinia = createPinia()
 

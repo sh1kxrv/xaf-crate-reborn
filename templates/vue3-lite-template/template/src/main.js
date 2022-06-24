@@ -1,12 +1,13 @@
 import { createApp } from 'vue'
-
-import store from './vuex'
+import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import IconWrapper from '~/components/icon-wrapper.vue'
 
+const pinia = createPinia()
+
 const app = createApp(App)
 app.component('icon-wrapper', IconWrapper)
-app.use(store)
+app.use(pinia)
 
 app.mount('#app')

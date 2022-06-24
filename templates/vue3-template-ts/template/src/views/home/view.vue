@@ -1,12 +1,4 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default {
-  setup() {
-    const t: string = 'asd'
-    console.log(t)
-  },
-}
-</script>
+<script setup lang="ts"></script>
 
 <template></template>
 

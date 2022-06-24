@@ -1,4 +1,4 @@
-export function createMiddleware(router, store) {
+export function createMiddleware(router) {
   router.beforeEach(async (to, from, next) => {
     if (!to.meta.middleware && !to.meta.bg_middlewares) {
       return next()
@@ -22,7 +22,7 @@ export function createMiddleware(router, store) {
 
     // Background Middleware - не требует ожидания всего рендера и работает в фоне
     for (let f of bg_middlewares) {
-      f({ to, from, next: callNext, store, redirect: callRedirect })
+      f({ to, from, next: callNext, redirect: callRedirect })
     }
 
     // Middleware с блокировкой рендера
@@ -31,7 +31,6 @@ export function createMiddleware(router, store) {
         to,
         from,
         next: callNext,
-        store,
         redirect: callRedirect,
       })
       if (result === false) break
