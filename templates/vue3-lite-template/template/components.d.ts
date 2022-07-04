@@ -1,6 +1,7 @@
 // * | Global Components | * \\
-declare module 'vue' {
+import IconWrapper from '~/components/icon-wrapper.vue'
+declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    IconWrapper: typeof import('./src/components/IconWrapper.vue')['default']
+    IconWrapper: typeof IconWrapper
   }
 }

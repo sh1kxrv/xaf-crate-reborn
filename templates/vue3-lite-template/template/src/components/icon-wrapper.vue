@@ -1,21 +1,18 @@
-<script>
-export default {
-  name: 'IconWrapper',
-  props: {
-    width: {
-      type: String,
-      default: '24',
-    },
-    height: {
-      type: String,
-      default: '24',
-    },
-    color: {
-      type: String,
-      default: 'currentColor',
-    },
+<script setup>
+defineProps({
+  width: {
+    type: String,
+    default: '24',
   },
-}
+  height: {
+    type: String,
+    default: '24',
+  },
+  color: {
+    type: String,
+    default: 'currentColor',
+  },
+})
 </script>
 
 <template>
