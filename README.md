@@ -54,12 +54,11 @@ xaf-crate | TS Reborn
     - [x] Sequalize ORM
   - [x] ESBuild
   - [x] Vue3
-    - [ ] Migrate to Pinia from Vuex
+    - [x] Migrate to Pinia from Vuex
     - [x] Переписать систему Middleware
       - [ ] Добавить приоритетность ( возможно сделать с помощью LinkedList )
   - [ ] Monorepo + Shared-library
-    - [ ] Lerna ?
-    - [ ] PNPM ?
+    - [ ] Lerna
 - [ ] Перенос Crate'а tools
   - [ ] index.js | Generator
   - [ ] Информация о проекте
