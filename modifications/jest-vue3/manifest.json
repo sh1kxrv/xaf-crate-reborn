@@ -9,15 +9,16 @@
     }
   },
   "devInstall": [
-    "@babel/core@7.17.10",
-    "@babel/plugin-transform-runtime@7.17.10",
-    "@babel/preset-env@7.17.10",
+    "@babel/core",
+    "@babel/plugin-transform-runtime",
+    "@babel/preset-env",
     "babel-core@bridge",
 
     "@types/jest",
     "@vue/vue3-jest",
-    "babel-jest@27.x",
-    "jest@27.x",
+    "babel-jest",
+    "jest@28.x",
+    "jest-environment-jsdom@28.x",
     "jest-image-snapshot",
     "jest-serializer-vue"
   ],

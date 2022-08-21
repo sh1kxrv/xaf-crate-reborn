@@ -8,23 +8,14 @@
     "preview": "vite preview",
     "update": "npx npm-check-updates -u"
   },
-  "peerDependencies": {
-    "@babel/core": "^7.17.8",
-    "babel-core": "^6.26.3",
-    "vue": "latest"
-  },
   "dependencies": {
-    "@types/source-map": "latest",
-    "node-sass": "latest",
     "vue": "latest",
     "vue-router": "latest",
     "pinia": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "latest",
-    "css-loader": "latest",
     "sass": "latest",
-    "sass-loader": "latest",
     "vite": "latest"
   }
 }
