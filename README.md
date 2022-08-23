@@ -4,16 +4,10 @@ xaf-crate | TS Reborn
 
 ## Установка
 
-...
-
-## Аргументы
-
-- xaf-crate
-  - project > создание шаблона
-  - mod > установка модификаций текущего шаблона
-  - tools
-    - api > генерация swagger/openapi рутов
-    - index > генерация index файла около другие файлов
+```
+$ npm install -g xaf-crate-reborn
+$ xfcr
+```
 
 ## Что нового?
 
