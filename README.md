@@ -2,7 +2,7 @@
 
 xaf-crate | TS Reborn
 
-## Установка
+## Установка / Installation
 
 ```
 $ npm install -g xaf-crate-reborn
