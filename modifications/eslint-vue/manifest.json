@@ -10,6 +10,7 @@
   },
   "devInstall": [
     "eslint-plugin-vue",
+    "eslint-plugin-jest",
     "prettier",
     "@rushstack/eslint-patch",
     "@vue/eslint-config-prettier"
