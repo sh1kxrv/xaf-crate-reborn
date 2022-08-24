@@ -1,7 +1,7 @@
+const { info, angry, warn, successfully } = require('../../utils/logger')
 import * as _fs from 'fs'
 import * as _path from 'path'
 import { File } from './utils/file'
-import { info, angry, warn, successfully } from '~/utils/logger'
 
 const pascalCaseReg = /([A-Z][a-z0-9]+)+/
 
@@ -51,11 +51,15 @@ export class IndexFileGenerator extends File {
   }
 
   #exportES6(name, filePath, isDirectory) {
-    return isDirectory ? `export * from './${filePath}'` : `export { default as ${name} } from './${filePath}'`
+    return isDirectory
+      ? `export * from './${filePath}'`
+      : `export { default as ${name} } from './${filePath}'`
   }
 
   #exportNode(name, filePath, isDirectory) {
-    return isDirectory ? `// directory not supported: ${filePath}` : `${name}: require('./${filePath}')`
+    return isDirectory
+      ? `// directory not supported: ${filePath}`
+      : `${name}: require('./${filePath}')`
   }
 
   /**
@@ -64,16 +68,16 @@ export class IndexFileGenerator extends File {
    */
   #export(name, filePath) {
     const isDirectory = _fs.statSync(filePath).isDirectory()
-    if (!this.#indexJSExists(filePath) && isDirectory) return `// : Directory './${filePath}' have not index.js :`
-    return this.isNode ? this.#exportNode(name, filePath, isDirectory) : this.#exportES6(name, filePath, isDirectory)
+    if (!this.#indexJSExists(filePath) && isDirectory)
+      return `// : Directory './${filePath}' have not index.js :`
+    return this.isNode
+      ? this.#exportNode(name, filePath, isDirectory)
+      : this.#exportES6(name, filePath, isDirectory)
   }
 
   #readdir() {
     let files = _fs.readdirSync(this.process_directory)
-    if (files.length === 0) {
-      angry('Директория пустая')
-      return []
-    }
+    if (files.length === 0) return angry('Директория пустая')
     if (files.includes('index.js')) {
       files = files.filter((file) => file !== 'index.js')
       warn('Файл index.js будет перезаписан')
@@ -95,9 +99,15 @@ export class IndexFileGenerator extends File {
     }
     if (this.isNode) this.add('}')
 
-    _fs.writeFileSync(_path.resolve(this.process_directory, 'index.js'), this.get(), { encoding: 'utf-8' })
+    _fs.writeFileSync(
+      _path.resolve(this.process_directory, 'index.js'),
+      this.get(),
+      { encoding: 'utf-8' }
+    )
 
     successfully('Генерация index-file успешно завершена!')
-    warn('Если вы используете NodeJS, то после `tools index` добавьте параметр -node')
+    warn(
+      'Если вы используете NodeJS, то после `tools index` добавьте параметр -node'
+    )
   }
 }

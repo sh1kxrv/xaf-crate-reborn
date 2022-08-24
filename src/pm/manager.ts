@@ -33,13 +33,5 @@ export class Manager {
       reject: false,
     })
   }
-  view(package_name, attribute = 'version') {
-    return execa(`${this.package_manager} info ${package_name} ${attribute}`, [], {
-      buffer: false,
-      reject: false,
-    })
-  }
-  uninstall(packages: string[]) {
-    // not implemented
-  }
+  uninstall(packages: string[]) {}
 }
