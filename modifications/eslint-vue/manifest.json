@@ -12,6 +12,7 @@
     "eslint-plugin-vue",
     "eslint-plugin-jest",
     "prettier",
+    "eslint",
     "@rushstack/eslint-patch",
     "@vue/eslint-config-prettier"
   ],
