@@ -7,13 +7,13 @@ module.exports = {
   plugins: ['jest'],
   env: {
     'vue/setup-compiler-macros': true,
+    'jest/globals': true,
     browser: true,
     amd: true,
     node: true,
-    'jest/globals': true,
   },
   parserOptions: {
-    ecmaVersion: 13,
+    ecmaVersion: 2020,
   },
   rules: {
     'prettier/prettier': [
