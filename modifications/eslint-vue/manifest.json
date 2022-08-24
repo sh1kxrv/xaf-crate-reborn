@@ -4,7 +4,7 @@
   "inject": {
     "package.json": {
       "scripts": {
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+        "lint": "eslint src/**/* --ext .vue,.js,.jsx,.cjs,.mjs --fix"
       }
     }
   },
