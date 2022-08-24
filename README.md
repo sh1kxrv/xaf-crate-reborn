@@ -4,9 +4,8 @@ xaf-crate | TS Reborn
 
 ## Установка / Installation
 
-```
+```console
 $ npm install -g xaf-crate-reborn
-$ xfcr
 ```
 
 ## Что нового?
@@ -29,3 +28,8 @@ $ xfcr
 > Мотивация использовать TypeScript
 
 Проблема надежности кода и сложность в обслуживании
+
+## How to use? / Как использовать?
+```console
+$ xfcr
+```
