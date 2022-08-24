@@ -1,5 +1,5 @@
 {
-  "name": "@xaf/shared",
+  "name": "@xaf/build",
   "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
