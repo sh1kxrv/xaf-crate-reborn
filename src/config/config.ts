@@ -41,17 +41,14 @@ export class XafConfigHandler {
     return (this.config[key] as T) ?? defaultValue
   }
 
-  set(key: string, value: any) {
+  set(key: string, value: unknown) {
     this.config[key] = value
   }
 
   static read(raw_json: string) {
-    const parsed_config: XafConfig = JSON.parse(raw_json)
-    const cfg = new XafConfigHandler(
-      parsed_config.project_name,
-      parsed_config.template_id,
-      parsed_config.mods
-    )
+    // todo: safe-json parse
+    const parsed_config: XafConfig = JSON.parse(raw_json) as unknown as XafConfig
+    const cfg = new XafConfigHandler(parsed_config.project_name, parsed_config.template_id, parsed_config.mods)
     return cfg
   }
 }
