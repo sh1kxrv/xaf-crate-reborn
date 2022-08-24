@@ -1,9 +1,11 @@
-import { UnitConfig } from '../interfaces/interface.config'
-
-type Inject = Record<string, object>
+type Inject = {
+  [key: string]: object
+}
 
 type Dependency = string
-export interface ModificationConfig extends UnitConfig {
+export interface ModificationConfig {
+  id: string
+  name: string
   inject?: Inject
   devInstall: Dependency[]
   install: Dependency[]
