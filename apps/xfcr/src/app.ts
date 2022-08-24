@@ -1,1 +1,1 @@
-console.log("Hello Turbo!");
+console.log('Hello Turbo!')

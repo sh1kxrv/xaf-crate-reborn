@@ -1,27 +1,30 @@
 import { build } from "esbuild";
-import fg from "fast-glob";
-import { rmDistPlugin } from "./rm-dist.mjs";
+import { rmDistPlugin } from "./plugins/rm-dist.mjs";
+import { moveApp } from "./plugins/move-app.mjs";
 import { esbuildPluginAliasPath } from "esbuild-plugin-alias-path";
-import { fileURLToPath, URL } from "url";
+import { cwd } from "process";
+import path from "path";
 
-export const buildNode = async ({ ...args }) => {
+const src = path.resolve(cwd(), "./src");
+
+export const buildNode = async (entrypoint) => {
   await build({
-    entryPoints: await fg("src/**/*.ts"),
+    entryPoints: [entrypoint],
     platform: "node",
     target: "node16",
     format: "esm",
-    bundle: false,
+    bundle: true,
     outdir: "./dist",
-    sourcemap: false,
+    sourcemap: true,
     logLevel: "info",
     plugins: [
       rmDistPlugin(),
+      moveApp(),
       esbuildPluginAliasPath({
         alias: {
-          "~/src/*": "./src/",
+          "~/*": src,
         },
       }),
     ],
-    ...args,
   });
 };
