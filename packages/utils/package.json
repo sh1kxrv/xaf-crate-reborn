@@ -1,0 +1,13 @@
+{
+  "name": "@xaf/utils",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.js",
+    "lint": "npx eslint src/**/*.ts"
+  },
+  "dependencies": {
+    "@xaf/shared": "*"
+  }
+}

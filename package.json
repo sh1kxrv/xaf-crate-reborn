@@ -6,14 +6,13 @@
   "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
   "author": "Егор <ItsAwware@yandex.ru>",
   "license": "MIT",
+  "private": true,
   "scripts": {
-    "dev": "node scripts/serve.js",
-    "build": "node scripts/build.js",
-    "start": "node --enable-source-maps dist/app.js",
-    "build:start": "yarn build && yarn start",
-    "test": "jest",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
     "#LINT#": "",
-    "lint": "eslint src/**/* --ext .vue,.js,.jsx,.cjs,.mjs --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "#PACKAGE#": "",
@@ -40,6 +39,7 @@
     "jest": "^27.x.x",
     "prettier": "^2.7.1",
     "ts-jest": "^27.1.4",
+    "turbo": "^1.4.3",
     "typescript": "^4.7.3"
   },
   "dependencies": {
@@ -52,5 +52,10 @@
     "ora": "^6.1.0",
     "prompts": "^2.4.2",
     "yargs": "^17.4.1"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "crates/*",
+    "apps/*"
+  ]
 }

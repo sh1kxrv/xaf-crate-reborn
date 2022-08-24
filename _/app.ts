@@ -17,7 +17,7 @@ type Crates<T extends UnitConfig> = Record<string, Crate<T>>
 
 async function bootstrap() {
   hello()
-  const crate_name: string = args._[0] ?? 'project'
+  const crate_name: string = args._[0]
 
   const crates: Crates<UnitConfig> = {
     project: new CrateProject(),
@@ -28,7 +28,7 @@ async function bootstrap() {
     try {
       await crate.boot()
     } catch (err: unknown) {
-      angry(err)
+      // angry(err)
     }
   } else if (isCommand(crate_name)) {
     console.log('1234')
@@ -37,4 +37,4 @@ async function bootstrap() {
   }
 }
 
-bootstrap()
+void bootstrap()
