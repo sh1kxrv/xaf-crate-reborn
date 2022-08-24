@@ -10,7 +10,8 @@
     "lint": "npx eslint src/**/*.ts"
   },
   "dependencies": {
-    "@xaf/build": "*"
+    "@xaf/build": "*",
+    "@xaf/config": "*"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.34.0",

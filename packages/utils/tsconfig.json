@@ -1,38 +1,13 @@
 {
+  "extends": "@xaf/config/typescript/tsconfig.node.json",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "./src",
     "outDir": "./dist",
-    "target": "ESNext",
-    "module": "ESNext",
-
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "allowUnreachableCode": false,
-
-    // Module
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-
-    // Strict
-    "strict": true,
-    "allowJs": false,
-    "noEmit": true,
-
-    // Dev
-    "sourceMap": true,
-    "watch": true,
-    "preserveWatchOutput": false,
-
-    // Other
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "noFallthroughCasesInSwitch": true,
     "paths": {
       "~/src/*": ["./src/*"]
-    }
+    },
+    "isolatedModules": true
   },
   "include": ["./src/"],
   "exclude": ["**/node_modules", "**/.*/"]
