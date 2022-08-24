@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/app.ts"],
-  "sourcesContent": ["console.log('Hello Turbo!')\r\n"],
-  "mappings": ";AAAA,QAAQ,IAAI,cAAc;",
-  "names": []
-}
