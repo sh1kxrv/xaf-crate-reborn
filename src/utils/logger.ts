@@ -1,7 +1,7 @@
-import { bold, lightGreen, yellow, bgLightRed, bgRed, lightRed } from 'kolorist'
+import { bold, lightGreen, yellow, lightRed, green, white } from 'kolorist'
 import { version } from '../../package.json'
 
-export function log(message: string, prefix: string = '📦', ...args: any[]) {
+export function log(message: string, prefix = '📦', ...args: any[]) {
   console.log(`[${prefix}] ${bold(message)}`, ...args)
 }
 
@@ -22,5 +22,5 @@ export function warn(msg) {
 }
 
 export function hello() {
-  log(bgRed(` xaf-crate ${bgLightRed('REBORN')} | v${version}`))
+  log(green(`(${white('REBORN')}) xaf-crate | ${white(`v${version}`)}`))
 }
