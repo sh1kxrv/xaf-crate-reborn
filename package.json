@@ -13,7 +13,7 @@
     "build:start": "yarn build && yarn start",
     "test": "jest",
     "#LINT#": "",
-    "lint": "eslint src/* --ext .vue,.js,.jsx,.cjs,.mjs --fix",
+    "lint": "eslint src/**/* --ext .vue,.js,.jsx,.cjs,.mjs --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "#PACKAGE#": "",

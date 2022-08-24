@@ -70,12 +70,12 @@ export class Modification {
       }
     }
 
-    const dependencies = this.unit_config.config?.install ?? []
-    const dev_dependencies = this.unit_config.config?.devInstall ?? []
+    const dependencies = this.unit_config.config.install ?? []
+    const dev_dependencies = this.unit_config.config.devInstall ?? []
     const commands_before_install =
-      this.unit_config.config?.commands_before_install ?? []
+      this.unit_config.config.commands_before_install ?? []
     const commands_after_install =
-      this.unit_config.config?.commands_after_install ?? []
+      this.unit_config.config.commands_after_install ?? []
 
     const spinner = ora({
       text: `Установка модификации:: '${this.unit_config.config.name}'`,

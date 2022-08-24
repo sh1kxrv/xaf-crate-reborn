@@ -8,7 +8,7 @@ export class Prompt {
   async show() {
     let isCanceled = false
     const data = await prompts(this.prompt, {
-      onCancel: () => !!!(isCanceled = true),
+      onCancel: () => !(isCanceled = true),
     })
 
     console.clear()

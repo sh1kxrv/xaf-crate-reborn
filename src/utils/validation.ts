@@ -16,7 +16,7 @@ function create_result(message: string, result: V_RESULT): ValidationResult {
   }
 }
 
-function make_length(min_length: number, max_length: number = 9999) {
+function make_length(min_length: number, max_length = 9999) {
   return function (str: string) {
     return str.length >= min_length && str.length < max_length
   }

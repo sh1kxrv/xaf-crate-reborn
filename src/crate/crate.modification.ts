@@ -37,7 +37,7 @@ export class CrateModification extends Crate<ModificationConfig> {
     const units = mod_ids.map((id) => this.unit(id).config)
     for (const unit of units) {
       const conflict = units.some(
-        (u) => u.conflicts?.includes(unit.id) ?? false
+        (u) => u.conflicts.includes(unit.id) ?? false
       )
       if (conflict)
         return {
