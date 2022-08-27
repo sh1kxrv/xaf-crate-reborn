@@ -1,2 +1,2 @@
-import { buildNode } from '@xaf/build/esbuild/build.node.mjs'
+import { buildNode } from '@xfcr/build/esbuild/build.node.mjs'
 await buildNode('src/app.ts')
