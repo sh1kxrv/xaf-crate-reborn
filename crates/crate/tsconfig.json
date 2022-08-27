@@ -1,0 +1,14 @@
+{
+  "extends": "@xaf/config/typescript/tsconfig.node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "~/src/*": ["./src/*"]
+    },
+    "isolatedModules": true
+  },
+  "include": ["./src/"],
+  "exclude": ["**/node_modules", "**/.*/"]
+}
