@@ -6,6 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "dev": "node dist/app.js",
     "build": "node esbuild.js",
     "lint": "npx eslint src/**/*.ts"
   },

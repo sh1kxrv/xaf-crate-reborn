@@ -20,6 +20,10 @@
     "prettier": {
       "dependsOn": ["prettier"],
       "outputs": []
+    },
+    "dev": {
+      "dependsOn": ["build"],
+      "outputs": []
     }
   }
 }
