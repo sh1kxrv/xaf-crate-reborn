@@ -1,0 +1,20 @@
+{
+  "name": "Vue 3 ESLint",
+  "id": "vue3-eslint-mod",
+  "inject": {
+    "package.json": {
+      "scripts": {
+        "lint": "eslint src/**/* --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+      }
+    }
+  },
+  "devInstall": [
+    "eslint-plugin-vue",
+    "eslint-plugin-jest",
+    "prettier",
+    "eslint",
+    "@rushstack/eslint-patch",
+    "@vue/eslint-config-prettier"
+  ],
+  "compatibles": ["vue3-plate-lite", "vue3-plate"]
+}

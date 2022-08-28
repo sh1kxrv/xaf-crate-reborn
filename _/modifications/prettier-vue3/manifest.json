@@ -1,0 +1,16 @@
+{
+  "name": "Vue 3 Prettier",
+  "id": "vue3-prettier-mod",
+  "inject": {
+    "package.json": {
+      "scripts": {
+        "prettier:check": "prettier --check .",
+        "prettier:write": "prettier --write ."
+      }
+    }
+  },
+  "devInstall": [
+    "prettier"
+  ],
+  "compatibles": ["vue3-plate-lite", "vue3-plate"]
+}

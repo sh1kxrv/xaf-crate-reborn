@@ -1,0 +1,14 @@
+{
+  "name": "Husky",
+  "id": "husky-mod",
+  "inject": {
+    "package.json": {
+      "scripts": {
+        "prepare": "husky install"
+      }
+    }
+  },
+  "devInstall": ["husky", "@commitlint/cli", "@commitlint/config-conventional"],
+  "install": [],
+  "compatibles": "*"
+}

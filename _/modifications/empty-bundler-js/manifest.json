@@ -1,0 +1,12 @@
+{
+  "name": "Empty Bundler | JS",
+  "id": "empty-bundler-js",
+  "inject": {
+    "es-xaf.config.json": {
+      "entrypoint": "src/app.js"
+    }
+  },
+  "install": [],
+  "compatibles": ["esbuild-node"],
+  "conflicts": ["express-js-mod", "express-ts-mod", "empty-bundler-ts"]
+}
