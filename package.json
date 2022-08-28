@@ -1,61 +1,25 @@
 {
   "name": "xaf-crate-reborn",
-  "version": "2.3.0",
-  "description": "CLI for creation main-stack application",
-  "main": "dist/app.js",
-  "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
-  "author": "Егор <ItsAwware@yandex.ru>",
-  "license": "MIT",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "turbo run dev",
     "build": "turbo run build",
-    "test": "turbo run test",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "#LINT#": "",
-    "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write .",
-    "#PACKAGE#": "",
-    "bump:minor": "yarn version minor",
-    "update": "npx npm-check-updates -u",
-    "g-i": "npm install -g ."
-  },
-  "bin": {
-    "xfcr": "dist/app.js"
-  },
-  "devDependencies": {
-    "@types/minimist": "^1.2.2",
-    "@types/node": "^17.0.30",
-    "@types/yargs": "^17.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
-    "@typescript-eslint/parser": "^5.27.1",
-    "chokidar": "^3.5.3",
-    "esbuild": "^0.14.38",
-    "esbuild-plugin-alias-path": "^1.1.1",
-    "eslint": "^8.22.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jest": "^26.8.7",
-    "fs-extra": "^10.1.0",
-    "jest": "^27.x.x",
-    "prettier": "^2.7.1",
-    "ts-jest": "^27.1.4",
-    "turbo": "^1.4.3",
-    "typescript": "^4.7.3"
+    "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test --parallel",
+    "typecheck": "turbo run typecheck",
+    "app:build": "turbo run build --scope=app-cli",
+    "app:start": "yarn app:build && yarn workspace @xfcr/app-cli run start"
   },
   "dependencies": {
-    "@apidevtools/swagger-parser": "^10.0.3",
-    "@types/jest": "^27.4.1",
-    "execa": "^6.1.0",
-    "kolorist": "^1.5.1",
-    "minimist": "^1.2.6",
-    "mustache": "^4.2.0",
-    "ora": "^6.1.0",
-    "prompts": "^2.4.2",
-    "yargs": "^17.4.1"
+    "turbo": "latest"
   },
-  "workspaces": [
-    "packages/*",
-    "crates/*",
-    "apps/*"
-  ]
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.17"
 }

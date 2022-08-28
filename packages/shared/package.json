@@ -1,0 +1,22 @@
+{
+  "name": "@xfcr/shared",
+  "version": "1.0.0",
+  "types": "src/index.ts",
+  "main": "src/index.ts",
+  "author": "0xaffff",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.2",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.7.13",
+    "eslint": "^8.23.0"
+  },
+  "dependencies": {
+    "@xfcr/eslint-config": "*",
+    "@xfcr/jest-config": "*"
+  }
+}
