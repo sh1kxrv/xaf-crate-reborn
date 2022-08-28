@@ -1,5 +1,5 @@
 {
-  "extends": "@xaf/config/typescript/tsconfig.node.json",
+  "extends": "@xfcr/config/typescript/tsconfig.node.json",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "./src",
