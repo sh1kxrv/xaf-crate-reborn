@@ -1,1 +1,6 @@
-const t: any = 1234
+import { Storage } from '@xfcr/shared'
+class App {
+  bootstrap() {}
+}
+
+new App().bootstrap()
