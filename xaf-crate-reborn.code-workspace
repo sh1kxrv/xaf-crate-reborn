@@ -1,25 +1,29 @@
 {
   "folders": [
-	{
-		"name": "✨ xaf-crate-reborn",
-		"path": "."
-	},
-	{
-		"name": "📦 @xfcr/app-cli",
-		"path": "packages/app-cli"
-	},
-	{
-		"name": "📦 @xfcr/eslint-config",
-		"path": "packages/eslint-config"
-	},
-	{
-		"name": "📦 @xfcr/jest-config",
-		"path": "packages/jest-config"
-	},
-	{
-		"name": "📦 @xfcr/shared",
-		"path": "packages/shared"
-	}
-],
+    {
+      "name": "✨ xaf-crate-reborn",
+      "path": "."
+    },
+    {
+      "name": "📦 @xfcr/app-cli",
+      "path": "packages/app-cli"
+    },
+    {
+      "name": "📦 @xfcr/assets",
+      "path": "packages/assets"
+    },
+    {
+      "name": "📦 @xfcr/eslint-config",
+      "path": "packages/eslint-config"
+    },
+    {
+      "name": "📦 @xfcr/jest-config",
+      "path": "packages/jest-config"
+    },
+    {
+      "name": "📦 @xfcr/shared",
+      "path": "packages/shared"
+    }
+  ],
   "settings": {}
 }

@@ -1,0 +1,8 @@
+{
+  "name": "@xfcr/assets",
+  "version": "1.0.0",
+  "description": "Templates & Modifications",
+  "main": "index.js",
+  "author": "xafxafxaf",
+  "license": "MIT"
+}
