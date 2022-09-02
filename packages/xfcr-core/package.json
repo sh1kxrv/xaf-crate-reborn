@@ -1,5 +1,5 @@
 {
-  "name": "@xfcr/shared",
+  "name": "@xfcr/core",
   "version": "1.0.0",
   "types": "src/index.ts",
   "main": "src/index.ts",
@@ -16,7 +16,7 @@
     "eslint": "^8.23.0"
   },
   "dependencies": {
-    "@xfcr/eslint-config": "*",
-    "@xfcr/jest-config": "*"
+    "@xfcr/eslint": "*",
+    "@xfcr/jest": "*"
   }
 }

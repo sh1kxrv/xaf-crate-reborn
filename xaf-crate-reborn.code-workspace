@@ -5,24 +5,24 @@
       "path": "."
     },
     {
-      "name": "📦 @xfcr/app-cli",
-      "path": "packages/app-cli"
+      "name": "📦 @xfcr/cli",
+      "path": "packages/xfcr-cli"
     },
     {
       "name": "📦 @xfcr/assets",
-      "path": "packages/assets"
+      "path": "packages/shared-assets"
     },
     {
-      "name": "📦 @xfcr/eslint-config",
-      "path": "packages/eslint-config"
+      "name": "📦 @xfcr/eslint",
+      "path": "packages/shared-eslint"
     },
     {
-      "name": "📦 @xfcr/jest-config",
-      "path": "packages/jest-config"
+      "name": "📦 @xfcr/jest",
+      "path": "packages/shared-jest"
     },
     {
-      "name": "📦 @xfcr/shared",
-      "path": "packages/shared"
+      "name": "📦 @xfcr/core",
+      "path": "packages/xfcr-core"
     }
   ],
   "settings": {}

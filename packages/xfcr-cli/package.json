@@ -1,5 +1,5 @@
 {
-  "name": "@xfcr/app-cli",
+  "name": "@xfcr/cli",
   "version": "1.0.0",
   "types": "src/app.ts",
   "main": "src/app.ts",
@@ -21,9 +21,9 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "@xfcr/eslint-config": "*",
-    "@xfcr/jest-config": "*",
-    "@xfcr/shared": "*",
+    "@xfcr/eslint": "*",
+    "@xfcr/jest": "*",
+    "@xfcr/core": "*",
     "yargs": "^17.5.1"
   }
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@xfcr/eslint-config'],
+  extends: ['../../node_modules/@xfcr/eslint'],
   parserOptions: {
     project: ['./tsconfig.json'],
   },
