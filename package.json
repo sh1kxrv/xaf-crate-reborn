@@ -11,8 +11,8 @@
     "lint:fix": "turbo run lint:fix",
     "test": "turbo run test --parallel",
     "typecheck": "turbo run typecheck",
-    "app:build": "turbo run build --scope=app-cli",
-    "app:start": "yarn app:build && yarn workspace @xfcr/app-cli run start"
+    "app:build": "turbo run build --scope=xfcr/cli",
+    "app:start": "yarn app:build && yarn workspace @xfcr/cli run start"
   },
   "dependencies": {
     "turbo": "latest"

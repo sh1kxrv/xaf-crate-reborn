@@ -4837,8 +4837,8 @@ async function parse_cli() {
 var App = class {
   async bootstrap() {
     const { get } = await parse_cli();
-    const mode = get("mode");
-    console.log(mode ?? "NULL");
+    const crate = get("mode");
+    console.log(crate ?? "NULL");
   }
 };
 (async () => {
