@@ -1,6 +1,6 @@
-import { Storage } from '../api/storage'
+import { StorageInterface } from '../api/storage'
 
-class _Storage implements Storage {
+class _Storage implements StorageInterface {
   private storage: Record<string, unknown> = {}
 
   set(key: string, value: unknown): void {

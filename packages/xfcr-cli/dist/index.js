@@ -418,7 +418,7 @@ var YargsParser = class {
   constructor(_mixin) {
     mixin2 = _mixin;
   }
-  parse(argsInput, options) {
+  parse(argsInput, options2) {
     const opts = Object.assign({
       alias: void 0,
       array: void 0,
@@ -436,7 +436,7 @@ var YargsParser = class {
       number: void 0,
       __: void 0,
       key: void 0
-    }, options);
+    }, options2);
     const args = tokenizeArgString(argsInput);
     const inputIsString = typeof argsInput === "string";
     const aliases = combineAliases(Object.assign(/* @__PURE__ */ Object.create(null), opts.alias));
@@ -1230,8 +1230,8 @@ function combineAliases(aliases) {
     }
   }
   aliasArrays.forEach(function(aliasArray) {
-    aliasArray = aliasArray.filter(function(v, i, self) {
-      return self.indexOf(v) === i;
+    aliasArray = aliasArray.filter(function(v, i, self2) {
+      return self2.indexOf(v) === i;
     });
     const lastAlias = aliasArray.pop();
     if (lastAlias !== void 0 && typeof lastAlias === "string") {
@@ -1687,8 +1687,8 @@ var GlobalMiddleware = class {
     this.frozens = [];
     this.yargs = yargs;
   }
-  addMiddleware(callback, applyBeforeValidation, global = true, mutates = false) {
-    argsert("<array|function> [boolean] [boolean] [boolean]", [callback, applyBeforeValidation, global], arguments.length);
+  addMiddleware(callback, applyBeforeValidation, global2 = true, mutates = false) {
+    argsert("<array|function> [boolean] [boolean] [boolean]", [callback, applyBeforeValidation, global2], arguments.length);
     if (Array.isArray(callback)) {
       for (let i = 0; i < callback.length; i++) {
         if (typeof callback[i] !== "function") {
@@ -1696,13 +1696,13 @@ var GlobalMiddleware = class {
         }
         const m = callback[i];
         m.applyBeforeValidation = applyBeforeValidation;
-        m.global = global;
+        m.global = global2;
       }
       Array.prototype.push.apply(this.globalMiddleware, callback);
     } else if (typeof callback === "function") {
       const m = callback;
       m.applyBeforeValidation = applyBeforeValidation;
-      m.global = global;
+      m.global = global2;
       m.mutates = mutates;
       this.globalMiddleware.push(callback);
     }
@@ -2050,28 +2050,28 @@ var CommandInstance = class {
     return parseOptions;
   }
   postProcessPositionals(argv, positionalMap, parseOptions, yargs) {
-    const options = Object.assign({}, yargs.getOptions());
-    options.default = Object.assign(parseOptions.default, options.default);
+    const options2 = Object.assign({}, yargs.getOptions());
+    options2.default = Object.assign(parseOptions.default, options2.default);
     for (const key of Object.keys(parseOptions.alias)) {
-      options.alias[key] = (options.alias[key] || []).concat(parseOptions.alias[key]);
+      options2.alias[key] = (options2.alias[key] || []).concat(parseOptions.alias[key]);
     }
-    options.array = options.array.concat(parseOptions.array);
-    options.config = {};
+    options2.array = options2.array.concat(parseOptions.array);
+    options2.config = {};
     const unparsed = [];
     Object.keys(positionalMap).forEach((key) => {
       positionalMap[key].map((value) => {
-        if (options.configuration["unknown-options-as-args"])
-          options.key[key] = true;
+        if (options2.configuration["unknown-options-as-args"])
+          options2.key[key] = true;
         unparsed.push(`--${key}`);
         unparsed.push(value);
       });
     });
     if (!unparsed.length)
       return;
-    const config = Object.assign({}, options.configuration, {
+    const config = Object.assign({}, options2.configuration, {
       "populate--": false
     });
-    const parsed = this.shim.Parser.detailed(unparsed, Object.assign({}, options, {
+    const parsed = this.shim.Parser.detailed(unparsed, Object.assign({}, options2, {
       configuration: config
     }));
     if (parsed.error) {
@@ -2208,25 +2208,25 @@ function isBoolean(fail) {
 }
 function usage(yargs, shim3) {
   const __ = shim3.y18n.__;
-  const self = {};
+  const self2 = {};
   const fails = [];
-  self.failFn = function failFn(f) {
+  self2.failFn = function failFn(f) {
     fails.push(f);
   };
   let failMessage = null;
   let globalFailMessage = null;
   let showHelpOnFail = true;
-  self.showHelpOnFail = function showHelpOnFailFn(arg1 = true, arg2) {
-    const [enabled, message] = typeof arg1 === "string" ? [true, arg1] : [arg1, arg2];
+  self2.showHelpOnFail = function showHelpOnFailFn(arg1 = true, arg2) {
+    const [enabled2, message] = typeof arg1 === "string" ? [true, arg1] : [arg1, arg2];
     if (yargs.getInternalMethods().isGlobalContext()) {
       globalFailMessage = message;
     }
     failMessage = message;
-    showHelpOnFail = enabled;
-    return self;
+    showHelpOnFail = enabled2;
+    return self2;
   };
   let failureOutput = false;
-  self.fail = function fail(msg, err) {
+  self2.fail = function fail(msg, err) {
     const logger = yargs.getInternalMethods().getLoggerInstance();
     if (fails.length) {
       for (let i = fails.length - 1; i >= 0; --i) {
@@ -2237,7 +2237,7 @@ function usage(yargs, shim3) {
           else if (msg)
             throw Error(msg);
         } else {
-          fail2(msg, err, self);
+          fail2(msg, err, self2);
         }
       }
     } else {
@@ -2270,31 +2270,31 @@ function usage(yargs, shim3) {
   };
   let usages = [];
   let usageDisabled = false;
-  self.usage = (msg, description) => {
+  self2.usage = (msg, description) => {
     if (msg === null) {
       usageDisabled = true;
       usages = [];
-      return self;
+      return self2;
     }
     usageDisabled = false;
     usages.push([msg, description || ""]);
-    return self;
+    return self2;
   };
-  self.getUsage = () => {
+  self2.getUsage = () => {
     return usages;
   };
-  self.getUsageDisabled = () => {
+  self2.getUsageDisabled = () => {
     return usageDisabled;
   };
-  self.getPositionalGroupName = () => {
+  self2.getPositionalGroupName = () => {
     return __("Positionals:");
   };
   let examples = [];
-  self.example = (cmd, description) => {
+  self2.example = (cmd, description) => {
     examples.push([cmd, description || ""]);
   };
   let commands = [];
-  self.command = function command2(cmd, description, isDefault, aliases, deprecated = false) {
+  self2.command = function command2(cmd, description, isDefault, aliases, deprecated = false) {
     if (isDefault) {
       commands = commands.map((cmdArray) => {
         cmdArray[2] = false;
@@ -2303,29 +2303,29 @@ function usage(yargs, shim3) {
     }
     commands.push([cmd, description || "", isDefault, aliases, deprecated]);
   };
-  self.getCommands = () => commands;
+  self2.getCommands = () => commands;
   let descriptions = {};
-  self.describe = function describe(keyOrKeys, desc) {
+  self2.describe = function describe(keyOrKeys, desc) {
     if (Array.isArray(keyOrKeys)) {
       keyOrKeys.forEach((k) => {
-        self.describe(k, desc);
+        self2.describe(k, desc);
       });
     } else if (typeof keyOrKeys === "object") {
       Object.keys(keyOrKeys).forEach((k) => {
-        self.describe(k, keyOrKeys[k]);
+        self2.describe(k, keyOrKeys[k]);
       });
     } else {
       descriptions[keyOrKeys] = desc;
     }
   };
-  self.getDescriptions = () => descriptions;
+  self2.getDescriptions = () => descriptions;
   let epilogs = [];
-  self.epilog = (msg) => {
+  self2.epilog = (msg) => {
     epilogs.push(msg);
   };
   let wrapSet = false;
   let wrap2;
-  self.wrap = (cols) => {
+  self2.wrap = (cols) => {
     wrapSet = true;
     wrap2 = cols;
   };
@@ -2337,8 +2337,8 @@ function usage(yargs, shim3) {
     return wrap2;
   }
   const deferY18nLookupPrefix = "__yargsString__:";
-  self.deferY18nLookup = (str) => deferY18nLookupPrefix + str;
-  self.help = function help() {
+  self2.deferY18nLookup = (str) => deferY18nLookupPrefix + str;
+  self2.help = function help() {
     if (cachedHelpMessage)
       return cachedHelpMessage;
     normalizeAliases();
@@ -2347,12 +2347,12 @@ function usage(yargs, shim3) {
     const demandedCommands = yargs.getDemandedCommands();
     const deprecatedOptions = yargs.getDeprecatedOptions();
     const groups = yargs.getGroups();
-    const options = yargs.getOptions();
+    const options2 = yargs.getOptions();
     let keys = [];
     keys = keys.concat(Object.keys(descriptions));
     keys = keys.concat(Object.keys(demandedOptions));
     keys = keys.concat(Object.keys(demandedCommands));
-    keys = keys.concat(Object.keys(options.default));
+    keys = keys.concat(Object.keys(options2.default));
     keys = keys.filter(filterHiddenOptions);
     keys = Object.keys(keys.reduce((acc, key) => {
       if (key !== "_")
@@ -2425,19 +2425,19 @@ function usage(yargs, shim3) {
       });
       ui2.div();
     }
-    const aliasKeys = (Object.keys(options.alias) || []).concat(Object.keys(yargs.parsed.newAliases) || []);
-    keys = keys.filter((key) => !yargs.parsed.newAliases[key] && aliasKeys.every((alias) => (options.alias[alias] || []).indexOf(key) === -1));
+    const aliasKeys = (Object.keys(options2.alias) || []).concat(Object.keys(yargs.parsed.newAliases) || []);
+    keys = keys.filter((key) => !yargs.parsed.newAliases[key] && aliasKeys.every((alias) => (options2.alias[alias] || []).indexOf(key) === -1));
     const defaultGroup = __("Options:");
     if (!groups[defaultGroup])
       groups[defaultGroup] = [];
-    addUngroupedKeys(keys, options.alias, groups, defaultGroup);
+    addUngroupedKeys(keys, options2.alias, groups, defaultGroup);
     const isLongSwitch = (sw) => /^--/.test(getText(sw));
     const displayedGroups = Object.keys(groups).filter((groupName) => groups[groupName].length > 0).map((groupName) => {
       const normalizedKeys = groups[groupName].filter(filterHiddenOptions).map((key) => {
         if (aliasKeys.includes(key))
           return key;
         for (let i = 0, aliasKey; (aliasKey = aliasKeys[i]) !== void 0; i++) {
-          if ((options.alias[aliasKey] || []).includes(key))
+          if ((options2.alias[aliasKey] || []).includes(key))
             return aliasKey;
         }
         return key;
@@ -2445,20 +2445,20 @@ function usage(yargs, shim3) {
       return { groupName, normalizedKeys };
     }).filter(({ normalizedKeys }) => normalizedKeys.length > 0).map(({ groupName, normalizedKeys }) => {
       const switches = normalizedKeys.reduce((acc, key) => {
-        acc[key] = [key].concat(options.alias[key] || []).map((sw) => {
-          if (groupName === self.getPositionalGroupName())
+        acc[key] = [key].concat(options2.alias[key] || []).map((sw) => {
+          if (groupName === self2.getPositionalGroupName())
             return sw;
           else {
-            return (/^[0-9]$/.test(sw) ? options.boolean.includes(key) ? "-" : "--" : sw.length > 1 ? "--" : "-") + sw;
+            return (/^[0-9]$/.test(sw) ? options2.boolean.includes(key) ? "-" : "--" : sw.length > 1 ? "--" : "-") + sw;
           }
         }).sort((sw1, sw2) => isLongSwitch(sw1) === isLongSwitch(sw2) ? 0 : isLongSwitch(sw1) ? 1 : -1).join(", ");
         return acc;
       }, {});
       return { groupName, normalizedKeys, switches };
     });
-    const shortSwitchesUsed = displayedGroups.filter(({ groupName }) => groupName !== self.getPositionalGroupName()).some(({ normalizedKeys, switches }) => !normalizedKeys.every((key) => isLongSwitch(switches[key])));
+    const shortSwitchesUsed = displayedGroups.filter(({ groupName }) => groupName !== self2.getPositionalGroupName()).some(({ normalizedKeys, switches }) => !normalizedKeys.every((key) => isLongSwitch(switches[key])));
     if (shortSwitchesUsed) {
-      displayedGroups.filter(({ groupName }) => groupName !== self.getPositionalGroupName()).forEach(({ normalizedKeys, switches }) => {
+      displayedGroups.filter(({ groupName }) => groupName !== self2.getPositionalGroupName()).forEach(({ normalizedKeys, switches }) => {
         normalizedKeys.forEach((key) => {
           if (isLongSwitch(switches[key])) {
             switches[key] = addIndentation(switches[key], "-x, ".length);
@@ -2474,25 +2474,25 @@ function usage(yargs, shim3) {
         let type = null;
         if (desc.includes(deferY18nLookupPrefix))
           desc = __(desc.substring(deferY18nLookupPrefix.length));
-        if (options.boolean.includes(key))
+        if (options2.boolean.includes(key))
           type = `[${__("boolean")}]`;
-        if (options.count.includes(key))
+        if (options2.count.includes(key))
           type = `[${__("count")}]`;
-        if (options.string.includes(key))
+        if (options2.string.includes(key))
           type = `[${__("string")}]`;
-        if (options.normalize.includes(key))
+        if (options2.normalize.includes(key))
           type = `[${__("string")}]`;
-        if (options.array.includes(key))
+        if (options2.array.includes(key))
           type = `[${__("array")}]`;
-        if (options.number.includes(key))
+        if (options2.number.includes(key))
           type = `[${__("number")}]`;
         const deprecatedExtra = (deprecated) => typeof deprecated === "string" ? `[${__("deprecated: %s", deprecated)}]` : `[${__("deprecated")}]`;
         const extra = [
           key in deprecatedOptions ? deprecatedExtra(deprecatedOptions[key]) : null,
           type,
           key in demandedOptions ? `[${__("required")}]` : null,
-          options.choices && options.choices[key] ? `[${__("choices:")} ${self.stringifiedValues(options.choices[key])}]` : null,
-          defaultString(options.default[key], options.defaultDescription[key])
+          options2.choices && options2.choices[key] ? `[${__("choices:")} ${self2.stringifiedValues(options2.choices[key])}]` : null,
+          defaultString(options2.default[key], options2.defaultDescription[key])
         ].filter(Boolean).join(" ");
         ui2.span({
           text: getText(kswitch),
@@ -2550,36 +2550,36 @@ function usage(yargs, shim3) {
   }
   function normalizeAliases() {
     const demandedOptions = yargs.getDemandedOptions();
-    const options = yargs.getOptions();
-    (Object.keys(options.alias) || []).forEach((key) => {
-      options.alias[key].forEach((alias) => {
+    const options2 = yargs.getOptions();
+    (Object.keys(options2.alias) || []).forEach((key) => {
+      options2.alias[key].forEach((alias) => {
         if (descriptions[alias])
-          self.describe(key, descriptions[alias]);
+          self2.describe(key, descriptions[alias]);
         if (alias in demandedOptions)
           yargs.demandOption(key, demandedOptions[alias]);
-        if (options.boolean.includes(alias))
+        if (options2.boolean.includes(alias))
           yargs.boolean(key);
-        if (options.count.includes(alias))
+        if (options2.count.includes(alias))
           yargs.count(key);
-        if (options.string.includes(alias))
+        if (options2.string.includes(alias))
           yargs.string(key);
-        if (options.normalize.includes(alias))
+        if (options2.normalize.includes(alias))
           yargs.normalize(key);
-        if (options.array.includes(alias))
+        if (options2.array.includes(alias))
           yargs.array(key);
-        if (options.number.includes(alias))
+        if (options2.number.includes(alias))
           yargs.number(key);
       });
     });
   }
   let cachedHelpMessage;
-  self.cacheHelpMessage = function() {
+  self2.cacheHelpMessage = function() {
     cachedHelpMessage = this.help();
   };
-  self.clearCachedHelpMessage = function() {
+  self2.clearCachedHelpMessage = function() {
     cachedHelpMessage = void 0;
   };
-  self.hasCachedHelpMessage = function() {
+  self2.hasCachedHelpMessage = function() {
     return !!cachedHelpMessage;
   };
   function addUngroupedKeys(keys, aliases, groups, defaultGroup) {
@@ -2599,18 +2599,18 @@ function usage(yargs, shim3) {
   function filterHiddenOptions(key) {
     return yargs.getOptions().hiddenOptions.indexOf(key) < 0 || yargs.parsed.argv[yargs.getOptions().showHiddenOpt];
   }
-  self.showHelp = (level) => {
+  self2.showHelp = (level) => {
     const logger = yargs.getInternalMethods().getLoggerInstance();
     if (!level)
       level = "error";
     const emit = typeof level === "function" ? level : logger[level];
-    emit(self.help());
+    emit(self2.help());
   };
-  self.functionDescription = (fn) => {
+  self2.functionDescription = (fn) => {
     const description = fn.name ? shim3.Parser.decamelize(fn.name, "-") : __("generated-value");
     return ["(", description, ")"].join("");
   };
-  self.stringifiedValues = function stringifiedValues(values, separator) {
+  self2.stringifiedValues = function stringifiedValues(values, separator) {
     let string = "";
     const sep = separator || ", ";
     const array = [].concat(values);
@@ -2652,17 +2652,17 @@ function usage(yargs, shim3) {
     }
   }
   let version = null;
-  self.version = (ver) => {
+  self2.version = (ver) => {
     version = ver;
   };
-  self.showVersion = (level) => {
+  self2.showVersion = (level) => {
     const logger = yargs.getInternalMethods().getLoggerInstance();
     if (!level)
       level = "error";
     const emit = typeof level === "function" ? level : logger[level];
     emit(version);
   };
-  self.reset = function reset(localLookup) {
+  self2.reset = function reset2(localLookup) {
     failMessage = null;
     failureOutput = false;
     usages = [];
@@ -2671,10 +2671,10 @@ function usage(yargs, shim3) {
     examples = [];
     commands = [];
     descriptions = objFilter(descriptions, (k) => !localLookup[k]);
-    return self;
+    return self2;
   };
   const frozens = [];
-  self.freeze = function freeze() {
+  self2.freeze = function freeze() {
     frozens.push({
       failMessage,
       failureOutput,
@@ -2686,7 +2686,7 @@ function usage(yargs, shim3) {
       descriptions
     });
   };
-  self.unfreeze = function unfreeze(defaultCommand = false) {
+  self2.unfreeze = function unfreeze(defaultCommand = false) {
     const frozen = frozens.pop();
     if (!frozen)
       return;
@@ -2709,7 +2709,7 @@ function usage(yargs, shim3) {
       } = frozen);
     }
   };
-  return self;
+  return self2;
 }
 function isIndentedText(text) {
   return typeof text === "object";
@@ -2827,14 +2827,14 @@ var Completion = class {
   }
   optionCompletions(completions, args, argv, current) {
     if ((current.match(/^-/) || current === "" && completions.length === 0) && !this.previousArgHasChoices(args)) {
-      const options = this.yargs.getOptions();
+      const options2 = this.yargs.getOptions();
       const positionalKeys = this.yargs.getGroups()[this.usage.getPositionalGroupName()] || [];
-      Object.keys(options.key).forEach((key) => {
-        const negable = !!options.configuration["boolean-negation"] && options.boolean.includes(key);
+      Object.keys(options2.key).forEach((key) => {
+        const negable = !!options2.configuration["boolean-negation"] && options2.boolean.includes(key);
         const isPositionalKey = positionalKeys.includes(key);
-        if (!isPositionalKey && !options.hiddenOptions.includes(key) && !this.argsContainKey(args, key, negable)) {
+        if (!isPositionalKey && !options2.hiddenOptions.includes(key) && !this.argsContainKey(args, key, negable)) {
           this.completeOptionKey(key, completions, current);
-          if (negable && !!options.default[key])
+          if (negable && !!options2.default[key])
             this.completeOptionKey(`no-${key}`, completions, current);
         }
       });
@@ -2877,15 +2877,15 @@ var Completion = class {
     if (!previousArg.startsWith("-"))
       return;
     const previousArgKey = previousArg.replace(/^-+/, "");
-    const options = this.yargs.getOptions();
+    const options2 = this.yargs.getOptions();
     const possibleAliases = [
       previousArgKey,
       ...this.yargs.getAliases()[previousArgKey] || []
     ];
     let choices;
     for (const possibleAlias of possibleAliases) {
-      if (Object.prototype.hasOwnProperty.call(options.key, possibleAlias) && Array.isArray(options.choices[possibleAlias])) {
-        choices = options.choices[possibleAlias];
+      if (Object.prototype.hasOwnProperty.call(options2.key, possibleAlias) && Array.isArray(options2.choices[possibleAlias])) {
+        choices = options2.choices[possibleAlias];
         break;
       }
     }
@@ -3017,8 +3017,8 @@ var specialKeys = ["$0", "--", "_"];
 function validation(yargs, usage2, shim3) {
   const __ = shim3.y18n.__;
   const __n = shim3.y18n.__n;
-  const self = {};
-  self.nonOptionCount = function nonOptionCount(argv) {
+  const self2 = {};
+  self2.nonOptionCount = function nonOptionCount(argv) {
     const demandedCommands = yargs.getDemandedCommands();
     const positionalCount = argv._.length + (argv["--"] ? argv["--"].length : 0);
     const _s = positionalCount - yargs.getInternalMethods().getContext().commands.length;
@@ -3038,12 +3038,12 @@ function validation(yargs, usage2, shim3) {
       }
     }
   };
-  self.positionalCount = function positionalCount(required, observed) {
+  self2.positionalCount = function positionalCount(required, observed) {
     if (observed < required) {
       usage2.fail(__n("Not enough non-option arguments: got %s, need at least %s", "Not enough non-option arguments: got %s, need at least %s", observed, observed + "", required + ""));
     }
   };
-  self.requiredArguments = function requiredArguments(argv, demandedOptions) {
+  self2.requiredArguments = function requiredArguments(argv, demandedOptions) {
     let missing = null;
     for (const key of Object.keys(demandedOptions)) {
       if (!Object.prototype.hasOwnProperty.call(argv, key) || typeof argv[key] === "undefined") {
@@ -3064,13 +3064,13 @@ ${customMsgs.join("\n")}` : "";
       usage2.fail(__n("Missing required argument: %s", "Missing required arguments: %s", Object.keys(missing).length, Object.keys(missing).join(", ") + customMsg));
     }
   };
-  self.unknownArguments = function unknownArguments(argv, aliases, positionalMap, isDefaultCommand, checkPositionals = true) {
+  self2.unknownArguments = function unknownArguments(argv, aliases, positionalMap, isDefaultCommand, checkPositionals = true) {
     var _a2;
     const commandKeys = yargs.getInternalMethods().getCommandInstance().getCommands();
     const unknown = [];
     const currentContext = yargs.getInternalMethods().getContext();
     Object.keys(argv).forEach((key) => {
-      if (!specialKeys.includes(key) && !Object.prototype.hasOwnProperty.call(positionalMap, key) && !Object.prototype.hasOwnProperty.call(yargs.getInternalMethods().getParseContext(), key) && !self.isValidAndSomeAliasIsNotNew(key, aliases)) {
+      if (!specialKeys.includes(key) && !Object.prototype.hasOwnProperty.call(positionalMap, key) && !Object.prototype.hasOwnProperty.call(yargs.getInternalMethods().getParseContext(), key) && !self2.isValidAndSomeAliasIsNotNew(key, aliases)) {
         unknown.push(key);
       }
     });
@@ -3098,7 +3098,7 @@ ${customMsgs.join("\n")}` : "";
       usage2.fail(__n("Unknown argument: %s", "Unknown arguments: %s", unknown.length, unknown.map((s) => s.trim() ? s : `"${s}"`).join(", ")));
     }
   };
-  self.unknownCommands = function unknownCommands(argv) {
+  self2.unknownCommands = function unknownCommands(argv) {
     const commandKeys = yargs.getInternalMethods().getCommandInstance().getCommands();
     const unknown = [];
     const currentContext = yargs.getInternalMethods().getContext();
@@ -3116,22 +3116,22 @@ ${customMsgs.join("\n")}` : "";
       return false;
     }
   };
-  self.isValidAndSomeAliasIsNotNew = function isValidAndSomeAliasIsNotNew(key, aliases) {
+  self2.isValidAndSomeAliasIsNotNew = function isValidAndSomeAliasIsNotNew(key, aliases) {
     if (!Object.prototype.hasOwnProperty.call(aliases, key)) {
       return false;
     }
     const newAliases = yargs.parsed.newAliases;
     return [key, ...aliases[key]].some((a) => !Object.prototype.hasOwnProperty.call(newAliases, a) || !newAliases[key]);
   };
-  self.limitedChoices = function limitedChoices(argv) {
-    const options = yargs.getOptions();
+  self2.limitedChoices = function limitedChoices(argv) {
+    const options2 = yargs.getOptions();
     const invalid = {};
-    if (!Object.keys(options.choices).length)
+    if (!Object.keys(options2.choices).length)
       return;
     Object.keys(argv).forEach((key) => {
-      if (specialKeys.indexOf(key) === -1 && Object.prototype.hasOwnProperty.call(options.choices, key)) {
+      if (specialKeys.indexOf(key) === -1 && Object.prototype.hasOwnProperty.call(options2.choices, key)) {
         [].concat(argv[key]).forEach((value) => {
-          if (options.choices[key].indexOf(value) === -1 && value !== void 0) {
+          if (options2.choices[key].indexOf(value) === -1 && value !== void 0) {
             invalid[key] = (invalid[key] || []).concat(value);
           }
         });
@@ -3143,16 +3143,16 @@ ${customMsgs.join("\n")}` : "";
     let msg = __("Invalid values:");
     invalidKeys.forEach((key) => {
       msg += `
-  ${__("Argument: %s, Given: %s, Choices: %s", key, usage2.stringifiedValues(invalid[key]), usage2.stringifiedValues(options.choices[key]))}`;
+  ${__("Argument: %s, Given: %s, Choices: %s", key, usage2.stringifiedValues(invalid[key]), usage2.stringifiedValues(options2.choices[key]))}`;
     });
     usage2.fail(msg);
   };
   let implied = {};
-  self.implies = function implies(key, value) {
+  self2.implies = function implies(key, value) {
     argsert("<string|object> [array|number|string]", [key, value], arguments.length);
     if (typeof key === "object") {
       Object.keys(key).forEach((k) => {
-        self.implies(k, key[k]);
+        self2.implies(k, key[k]);
       });
     } else {
       yargs.global(key);
@@ -3160,14 +3160,14 @@ ${customMsgs.join("\n")}` : "";
         implied[key] = [];
       }
       if (Array.isArray(value)) {
-        value.forEach((i) => self.implies(key, i));
+        value.forEach((i) => self2.implies(key, i));
       } else {
         assertNotStrictEqual(value, void 0, shim3);
         implied[key].push(value);
       }
     }
   };
-  self.getImplied = function getImplied() {
+  self2.getImplied = function getImplied() {
     return implied;
   };
   function keyExists(argv, val) {
@@ -3183,7 +3183,7 @@ ${customMsgs.join("\n")}` : "";
     }
     return val;
   }
-  self.implications = function implications(argv) {
+  self2.implications = function implications(argv) {
     const implyFail = [];
     Object.keys(implied).forEach((key) => {
       const origKey = key;
@@ -3207,11 +3207,11 @@ ${customMsgs.join("\n")}` : "";
     }
   };
   let conflicting = {};
-  self.conflicts = function conflicts(key, value) {
+  self2.conflicts = function conflicts(key, value) {
     argsert("<string|object> [array|string]", [key, value], arguments.length);
     if (typeof key === "object") {
       Object.keys(key).forEach((k) => {
-        self.conflicts(k, key[k]);
+        self2.conflicts(k, key[k]);
       });
     } else {
       yargs.global(key);
@@ -3219,14 +3219,14 @@ ${customMsgs.join("\n")}` : "";
         conflicting[key] = [];
       }
       if (Array.isArray(value)) {
-        value.forEach((i) => self.conflicts(key, i));
+        value.forEach((i) => self2.conflicts(key, i));
       } else {
         conflicting[key].push(value);
       }
     }
   };
-  self.getConflicting = () => conflicting;
-  self.conflicting = function conflictingFn(argv) {
+  self2.getConflicting = () => conflicting;
+  self2.conflicting = function conflictingFn(argv) {
     Object.keys(argv).forEach((key) => {
       if (conflicting[key]) {
         conflicting[key].forEach((value) => {
@@ -3246,7 +3246,7 @@ ${customMsgs.join("\n")}` : "";
       });
     }
   };
-  self.recommendCommands = function recommendCommands(cmd, potentialCommands) {
+  self2.recommendCommands = function recommendCommands(cmd, potentialCommands) {
     const threshold = 3;
     potentialCommands = potentialCommands.sort((a, b) => b.length - a.length);
     let recommended = null;
@@ -3261,24 +3261,24 @@ ${customMsgs.join("\n")}` : "";
     if (recommended)
       usage2.fail(__("Did you mean %s?", recommended));
   };
-  self.reset = function reset(localLookup) {
+  self2.reset = function reset2(localLookup) {
     implied = objFilter(implied, (k) => !localLookup[k]);
     conflicting = objFilter(conflicting, (k) => !localLookup[k]);
-    return self;
+    return self2;
   };
   const frozens = [];
-  self.freeze = function freeze() {
+  self2.freeze = function freeze() {
     frozens.push({
       implied,
       conflicting
     });
   };
-  self.unfreeze = function unfreeze() {
+  self2.unfreeze = function unfreeze() {
     const frozen = frozens.pop();
     assertNotStrictEqual(frozen, void 0, shim3);
     ({ implied, conflicting } = frozen);
   };
-  return self;
+  return self2;
 }
 
 // ../../node_modules/yargs/build/lib/utils/apply-extends.js
@@ -3533,8 +3533,8 @@ var YargsInstance = class {
     this[kTrackManuallySetKeys](keys);
     return this;
   }
-  check(f, global) {
-    argsert("<function> [boolean]", [f, global], arguments.length);
+  check(f, global2) {
+    argsert("<function> [boolean]", [f, global2], arguments.length);
     this.middleware((argv, _yargs) => {
       return maybeAsyncResult(() => {
         return f(argv, _yargs.getOptions());
@@ -3549,7 +3549,7 @@ var YargsInstance = class {
         __classPrivateFieldGet(this, _YargsInstance_usage, "f").fail(err.message ? err.message : err.toString(), err);
         return argv;
       });
-    }, false, global);
+    }, false, global2);
     return this;
   }
   choices(key, value) {
@@ -3771,9 +3771,9 @@ var YargsInstance = class {
     if (__classPrivateFieldGet(this, _YargsInstance_exitProcess, "f"))
       __classPrivateFieldGet(this, _YargsInstance_shim, "f").process.exit(code);
   }
-  exitProcess(enabled = true) {
-    argsert("[boolean]", [enabled], arguments.length);
-    __classPrivateFieldSet(this, _YargsInstance_exitProcess, enabled, "f");
+  exitProcess(enabled2 = true) {
+    argsert("[boolean]", [enabled2], arguments.length);
+    __classPrivateFieldSet(this, _YargsInstance_exitProcess, enabled2, "f");
     return this;
   }
   fail(f) {
@@ -3855,10 +3855,10 @@ var YargsInstance = class {
   getStrictOptions() {
     return __classPrivateFieldGet(this, _YargsInstance_strictOptions, "f");
   }
-  global(globals, global) {
-    argsert("<string|array> [boolean]", [globals, global], arguments.length);
+  global(globals, global2) {
+    argsert("<string|array> [boolean]", [globals, global2], arguments.length);
     globals = [].concat(globals);
-    if (global !== false) {
+    if (global2 !== false) {
       __classPrivateFieldGet(this, _YargsInstance_options, "f").local = __classPrivateFieldGet(this, _YargsInstance_options, "f").local.filter((l) => globals.indexOf(l) === -1);
     } else {
       globals.forEach((g) => {
@@ -3902,8 +3902,8 @@ var YargsInstance = class {
     __classPrivateFieldGet(this, _YargsInstance_shim, "f").y18n.setLocale(locale);
     return this;
   }
-  middleware(callback, applyBeforeValidation, global) {
-    return __classPrivateFieldGet(this, _YargsInstance_globalMiddleware, "f").addMiddleware(callback, !!applyBeforeValidation, global);
+  middleware(callback, applyBeforeValidation, global2) {
+    return __classPrivateFieldGet(this, _YargsInstance_globalMiddleware, "f").addMiddleware(callback, !!applyBeforeValidation, global2);
   }
   nargs(key, value) {
     argsert("<string|object|array> [number]", [key, value], arguments.length);
@@ -4194,9 +4194,9 @@ var YargsInstance = class {
     this.$0 = scriptName;
     return this;
   }
-  showHelpOnFail(enabled, message) {
-    argsert("[boolean|string] [string]", [enabled, message], arguments.length);
-    __classPrivateFieldGet(this, _YargsInstance_usage, "f").showHelpOnFail(enabled, message);
+  showHelpOnFail(enabled2, message) {
+    argsert("[boolean|string] [string]", [enabled2, message], arguments.length);
+    __classPrivateFieldGet(this, _YargsInstance_usage, "f").showHelpOnFail(enabled2, message);
     return this;
   }
   showVersion(level) {
@@ -4209,19 +4209,19 @@ var YargsInstance = class {
     this[kPopulateParserHintArray]("skipValidation", keys);
     return this;
   }
-  strict(enabled) {
-    argsert("[boolean]", [enabled], arguments.length);
-    __classPrivateFieldSet(this, _YargsInstance_strict, enabled !== false, "f");
+  strict(enabled2) {
+    argsert("[boolean]", [enabled2], arguments.length);
+    __classPrivateFieldSet(this, _YargsInstance_strict, enabled2 !== false, "f");
     return this;
   }
-  strictCommands(enabled) {
-    argsert("[boolean]", [enabled], arguments.length);
-    __classPrivateFieldSet(this, _YargsInstance_strictCommands, enabled !== false, "f");
+  strictCommands(enabled2) {
+    argsert("[boolean]", [enabled2], arguments.length);
+    __classPrivateFieldSet(this, _YargsInstance_strictCommands, enabled2 !== false, "f");
     return this;
   }
-  strictOptions(enabled) {
-    argsert("[boolean]", [enabled], arguments.length);
-    __classPrivateFieldSet(this, _YargsInstance_strictOptions, enabled !== false, "f");
+  strictOptions(enabled2) {
+    argsert("[boolean]", [enabled2], arguments.length);
+    __classPrivateFieldSet(this, _YargsInstance_strictOptions, enabled2 !== false, "f");
     return this;
   }
   string(keys) {
@@ -4822,6 +4822,96 @@ function isYargsInstance(y) {
 var Yargs = YargsFactory(esm_default);
 var yargs_default = Yargs;
 
+// ../../node_modules/kolorist/dist/esm/index.mjs
+var enabled = true;
+var globalVar = typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {};
+var supportLevel = 0;
+if (globalVar.process && globalVar.process.env && globalVar.process.stdout) {
+  const { FORCE_COLOR, NODE_DISABLE_COLORS, TERM } = globalVar.process.env;
+  if (NODE_DISABLE_COLORS || FORCE_COLOR === "0") {
+    enabled = false;
+  } else if (FORCE_COLOR === "1") {
+    enabled = true;
+  } else if (TERM === "dumb") {
+    enabled = false;
+  } else if ("CI" in globalVar.process.env && [
+    "TRAVIS",
+    "CIRCLECI",
+    "APPVEYOR",
+    "GITLAB_CI",
+    "GITHUB_ACTIONS",
+    "BUILDKITE",
+    "DRONE"
+  ].some((vendor) => vendor in globalVar.process.env)) {
+    enabled = true;
+  } else {
+    enabled = process.stdout.isTTY;
+  }
+  if (enabled) {
+    supportLevel = TERM && TERM.endsWith("-256color") ? 2 : 1;
+  }
+}
+var options = {
+  enabled,
+  supportLevel
+};
+function kolorist(start, end, level = 1) {
+  const open = `\x1B[${start}m`;
+  const close = `\x1B[${end}m`;
+  const regex = new RegExp(`\\x1b\\[${end}m`, "g");
+  return (str) => {
+    return options.enabled && options.supportLevel >= level ? open + ("" + str).replace(regex, open) + close : "" + str;
+  };
+}
+var reset = kolorist(0, 0);
+var bold = kolorist(1, 22);
+var dim = kolorist(2, 22);
+var italic = kolorist(3, 23);
+var underline = kolorist(4, 24);
+var inverse = kolorist(7, 27);
+var hidden = kolorist(8, 28);
+var strikethrough = kolorist(9, 29);
+var black = kolorist(30, 39);
+var red = kolorist(31, 39);
+var green = kolorist(32, 39);
+var yellow = kolorist(33, 39);
+var blue = kolorist(34, 39);
+var magenta = kolorist(35, 39);
+var cyan = kolorist(36, 39);
+var white = kolorist(97, 39);
+var gray = kolorist(90, 39);
+var lightGray = kolorist(37, 39);
+var lightRed = kolorist(91, 39);
+var lightGreen = kolorist(92, 39);
+var lightYellow = kolorist(93, 39);
+var lightBlue = kolorist(94, 39);
+var lightMagenta = kolorist(95, 39);
+var lightCyan = kolorist(96, 39);
+var bgBlack = kolorist(40, 49);
+var bgRed = kolorist(41, 49);
+var bgGreen = kolorist(42, 49);
+var bgYellow = kolorist(43, 49);
+var bgBlue = kolorist(44, 49);
+var bgMagenta = kolorist(45, 49);
+var bgCyan = kolorist(46, 49);
+var bgWhite = kolorist(107, 49);
+var bgGray = kolorist(100, 49);
+var bgLightRed = kolorist(101, 49);
+var bgLightGreen = kolorist(102, 49);
+var bgLightYellow = kolorist(103, 49);
+var bgLightBlue = kolorist(104, 49);
+var bgLightMagenta = kolorist(105, 49);
+var bgLightCyan = kolorist(106, 49);
+var bgLightGray = kolorist(47, 49);
+
+// src/terminal/index.ts
+function emoji_message(message, emoji, postfix = "\u21DD") {
+  console.log(`[${emoji}] ${gray(postfix)} ${message}`);
+}
+function debug(message) {
+  emoji_message(gray(message), "\u{1F41B}");
+}
+
 // src/app.ts
 async function parse_cli() {
   const yargs = yargs_default(process.argv.slice(2));
@@ -4838,6 +4928,7 @@ var App = class {
   async bootstrap() {
     const { get } = await parse_cli();
     const crate = get("mode");
+    debug(`Crate -> ${crate ?? "null crate"}`);
     console.log(crate ?? "NULL");
   }
 };

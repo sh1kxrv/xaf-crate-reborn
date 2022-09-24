@@ -1,4 +1,5 @@
 import Yargs from 'yargs'
+import { debug } from '~/terminal'
 
 async function parse_cli() {
   const yargs = Yargs(process.argv.slice(2))
@@ -15,11 +16,8 @@ class App {
   async bootstrap() {
     const { get } = await parse_cli()
     const crate: string | null = get('mode')
-    console.log(crate ?? 'NULL')
+    debug(`Crate -> ${crate ?? 'null crate'}`)
   }
 }
 
-;(async () => {
-  const app = new App()
-  await app.bootstrap()
-})().catch(console.error)
+void new App().bootstrap()

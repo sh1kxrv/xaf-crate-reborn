@@ -1,7 +1,3 @@
-/**
- * Shareable minimal ESLint config supporting both TypeScript (for source code,
- * tests, and scripts) and plain JavaScript (mostly for configuration files).
- */
 module.exports = {
   overrides: [
     {
