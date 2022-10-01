@@ -1,6 +1,6 @@
 {
   "name": "xaf-crate-reborn",
-  "version": "2.5.7",
+  "version": "2.5.8",
   "description": "CLI for creation main-stack application",
   "main": "dist/app.js",
   "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
@@ -49,6 +49,7 @@
     "mustache": "^4.2.0",
     "ora": "^6.1.0",
     "prompts": "^2.4.2",
+    "xaf-crate-reborn": "^2.5.7",
     "yargs": "^17.4.1"
   }
 }
