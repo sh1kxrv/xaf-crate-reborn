@@ -13,7 +13,7 @@ $ npm install -g xaf-crate-reborn
 - Новая система создания шаблонов
 - Новая система модификаций шаблонов
 - Генерация конфигураций после создания шаблона
-- Продвинутая генерация JSDoc по swagger/openapi ( soon )
+- Продвинутая генерация JSDoc по swagger/openapi ( soon ) -> [xaf-vault](https://github.com/xafxafxaf/xaf-vault)
 
 ## FAQ
 
@@ -30,6 +30,7 @@ $ npm install -g xaf-crate-reborn
 Проблема надежности кода и сложность в обслуживании
 
 ## How to use? / Как использовать?
+
 ```console
 $ xfcr
 ```
