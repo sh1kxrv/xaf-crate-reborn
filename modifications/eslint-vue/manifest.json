@@ -4,7 +4,7 @@
   "inject": {
     "package.json": {
       "scripts": {
-        "lint": "eslint src/**/* --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix"
       }
     }
   },
@@ -16,5 +16,5 @@
     "@rushstack/eslint-patch",
     "@vue/eslint-config-prettier"
   ],
-  "compatibles": ["vue3-plate-lite", "vue3-plate"]
+  "compatibles": ["vue3-plate-lite", "vue3-plate", , "nuxt3-plate"]
 }

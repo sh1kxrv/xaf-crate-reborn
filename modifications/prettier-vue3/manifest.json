@@ -12,5 +12,5 @@
   "devInstall": [
     "prettier"
   ],
-  "compatibles": ["vue3-plate-lite", "vue3-plate"]
+  "compatibles": ["vue3-plate-lite", "vue3-plate", "nuxt3-plate"]
 }
