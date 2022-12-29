@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@vue-macros/nuxt'],
   css: ['~/assets/styles/reset.scss', '~/assets/styles/general.scss'],
   vite: {
     css: {

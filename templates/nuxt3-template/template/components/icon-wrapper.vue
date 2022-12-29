@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import type { IconWrapperProps } from '@/types/props/icon-wrapper.prop'
-withDefaults(defineProps<IconWrapperProps>(), {
+export interface Props {
+  width: string
+  height: string
+  color: string
+}
+
+withDefaults(defineProps<Props>(), {
   color: 'currentColor',
   width: '24',
   height: '24',
