@@ -1,0 +1,6 @@
+{
+  "name": "SASS Loader",
+  "id": "sass-mod",
+  "devInstall": ["sass", "sass-loader"],
+  "compatibles": ["vue3-plate", "nuxt3-plate"]
+}
