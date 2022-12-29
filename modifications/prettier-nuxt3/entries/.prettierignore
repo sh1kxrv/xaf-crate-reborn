@@ -2,3 +2,4 @@ public
 dist
 husky
 node_modules
+.nuxt

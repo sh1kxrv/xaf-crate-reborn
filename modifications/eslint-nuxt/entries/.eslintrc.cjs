@@ -8,6 +8,7 @@ module.exports = {
         ignores: []
       }
     ],
+    'vue/no-multiple-template-root': 'warn',
     'no-unused-vars': 'warn',
     'no-console': 'warn'
   }
