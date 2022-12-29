@@ -1,6 +1,6 @@
 {
-  "name": "Vue 3 ESLint",
-  "id": "vue3-eslint-mod",
+  "name": "Nuxt 3 ESLint",
+  "id": "nuxt3-eslint-mod",
   "inject": {
     "package.json": {
       "scripts": {
@@ -13,13 +13,7 @@
     "eslint-plugin-jest",
     "prettier",
     "eslint",
-    "@rushstack/eslint-patch",
-    "@vue/eslint-config-prettier"
+    "@nuxtjs/eslint-config-typescript"
   ],
-  "compatibles": [
-    "vue3-plate-lite",
-    "vue3-plate",
-    "nuxt3-plate",
-    "monorepo-plate"
-  ]
+  "compatibles": ["nuxt3-plate", "monorepo-plate"]
 }

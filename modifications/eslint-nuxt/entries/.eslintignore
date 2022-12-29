@@ -1,0 +1,6 @@
+components.d.ts
+dist
+node_modules
+public
+.nuxt
+.husky

@@ -1,6 +1,6 @@
 {
-  "name": "Vue 3 Prettier",
-  "id": "vue3-prettier-mod",
+  "name": "Nuxt 3 Prettier",
+  "id": "nuxt3-prettier-mod",
   "inject": {
     "package.json": {
       "scripts": {
@@ -10,5 +10,5 @@
     }
   },
   "devInstall": ["prettier"],
-  "compatibles": ["vue3-plate-lite", "vue3-plate", "nuxt3-plate", "monorepo-plate"]
+  "compatibles": ["nuxt3-plate", "monorepo-plate"]
 }

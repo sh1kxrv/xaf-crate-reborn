@@ -1,0 +1,21 @@
+{
+  "name": "xaf-monorepo",
+  "scripts": {
+    "build": "turbo run build",
+    "build:mobile": "yarn workspace @name/mobile build",
+    "build:desktop": "yarn workspace @name/desktop build",
+    "dev:mobile": "yarn workspace @name/mobile dev",
+    "dev:desktop": "yarn workspace @name/desktop dev"
+  },
+  "devDependencies": {
+    "turbo": "1.6.3"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.17"
+}
