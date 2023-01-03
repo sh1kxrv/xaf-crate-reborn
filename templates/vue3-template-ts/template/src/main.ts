@@ -6,11 +6,8 @@ import IconWrapper from '~/components/icon-wrapper.vue'
 import router from './router'
 
 import App from './App.vue'
-import { createMiddleware } from './_middleware'
-
-import InitializeViews from '~/views'
-InitializeViews(router)
-createMiddleware(router)
+import { hookMiddleware } from './core/middleware'
+hookMiddleware(router)
 
 const pinia = createPinia()
 const app = createApp(App)

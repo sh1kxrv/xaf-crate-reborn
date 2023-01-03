@@ -1,6 +1,9 @@
-import routes from './_routes'
+import View from './view.vue'
 
-export default {
-  name: 'home',
-  routes,
-}
+export default [
+  {
+    path: '/',
+    name: 'Home',
+    component: View,
+  },
+]

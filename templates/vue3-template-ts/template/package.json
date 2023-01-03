@@ -9,8 +9,6 @@
     "update": "npx npm-check-updates -u"
   },
   "peerDependencies": {
-    "@babel/core": "^7.17.8",
-    "babel-core": "^6.26.3",
     "vue": "latest"
   },
   "dependencies": {
@@ -21,20 +19,13 @@
     "pinia": "latest"
   },
   "devDependencies": {
-    "@babel/core": "7.17.10",
-    "@babel/plugin-transform-runtime": "7.17.10",
-    "@babel/preset-env": "7.17.10",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
-    "@types/jest": "^28.1.1",
     "@vitejs/plugin-vue": "latest",
     "@vue/vue3-jest": "^28.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "27.x",
     "css-loader": "^6.7.1",
-    "jest": "27.x",
-    "jest-image-snapshot": "^5.1.0",
-    "jest-serializer-vue": "^2.0.2",
     "sass": "latest",
     "sass-loader": "latest",
     "vite": "latest"
