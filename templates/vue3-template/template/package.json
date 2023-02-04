@@ -16,6 +16,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "latest",
     "sass": "latest",
-    "vite": "latest"
+    "vite": "latest",
+    "unplugin-auto-import": "latest"
   }
 }

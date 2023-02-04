@@ -12,22 +12,14 @@
     "vue": "latest"
   },
   "dependencies": {
-    "@types/source-map": "latest",
-    "node-sass": "latest",
     "vue": "latest",
     "vue-router": "latest",
     "pinia": "latest"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
+    "unplugin-auto-import": "latest",
+    "vite-plugin-vue-type-imports": "latest",
     "@vitejs/plugin-vue": "latest",
-    "@vue/vue3-jest": "^28.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "27.x",
-    "css-loader": "^6.7.1",
-    "sass": "latest",
-    "sass-loader": "latest",
     "vite": "latest"
   }
 }

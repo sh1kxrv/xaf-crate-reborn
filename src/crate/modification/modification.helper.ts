@@ -77,8 +77,10 @@ export class Modification {
     const commands_after_install =
       this.unit_config.config?.commands_after_install ?? []
 
+    console.log(dev_dependencies, dependencies)
+
     const spinner = ora({
-      text: `Установка модификации:: '${this.unit_config.config.name}'`,
+      text: `Установка модификации:: '${this.unit_config.config.name}'`
     }).start()
 
     if (dependencies)

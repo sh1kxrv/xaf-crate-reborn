@@ -9,6 +9,5 @@
     }
   },
   "devInstall": ["husky", "@commitlint/cli", "@commitlint/config-conventional"],
-  "install": [],
   "compatibles": "*"
 }

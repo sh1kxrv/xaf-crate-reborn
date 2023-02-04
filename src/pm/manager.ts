@@ -16,21 +16,21 @@ export class Manager {
     return execa(`${this.package_manager} ${args}`, [], {
       cwd: working_directory,
       buffer: false,
-      reject: false,
+      reject: false
     })
   }
   install_only(working_directory = cwd()) {
     return execa(`${this.package_manager} install`, [], {
       cwd: working_directory,
       buffer: false,
-      reject: false,
+      reject: false
     })
   }
   execute(command, working_directory = cwd()) {
     return execa(`${this.package_manager} ${command}`, [], {
       cwd: working_directory,
       buffer: false,
-      reject: false,
+      reject: false
     })
   }
   uninstall(packages: string[]) {}
