@@ -5,9 +5,13 @@
     "package.json": {
       "scripts": {
         "prepare": "husky install"
+      },
+      "devDependencies": {
+        "husky": "latest",
+        "@commitlint/cli": "latest",
+        "@commitlint/config-conventional": "latest"
       }
     }
   },
-  "devInstall": ["husky", "@commitlint/cli", "@commitlint/config-conventional"],
   "compatibles": "*"
 }

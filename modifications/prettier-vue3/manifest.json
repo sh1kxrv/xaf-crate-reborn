@@ -6,9 +6,17 @@
       "scripts": {
         "prettier:check": "prettier --check .",
         "prettier:write": "prettier --write ."
+      },
+      "devDependencies": {
+        "prettier": "latest"
       }
     }
   },
-  "devInstall": ["prettier"],
-  "compatibles": ["vue3-plate-lite", "vue3-plate", "nuxt3-plate", "monorepo-plate"]
+  "compatibles": [
+    "vue3-plate-lite",
+    "vue3-plate",
+    "nuxt3-plate",
+    "monorepo-plate",
+    "vue3-plate-ts"
+  ]
 }

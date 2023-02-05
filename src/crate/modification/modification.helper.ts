@@ -36,6 +36,7 @@ export class Modification {
    */
   private copy_mod() {
     const patch_path = _path.resolve(this.unit_config.path, 'entries')
+    if (!_fs.existsSync(patch_path)) return
     copy(patch_path, this.working_directory)
   }
 
@@ -76,8 +77,6 @@ export class Modification {
       this.unit_config.config?.commands_before_install ?? []
     const commands_after_install =
       this.unit_config.config?.commands_after_install ?? []
-
-    console.log(dev_dependencies, dependencies)
 
     const spinner = ora({
       text: `Установка модификации:: '${this.unit_config.config.name}'`

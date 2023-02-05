@@ -5,15 +5,15 @@
     "package.json": {
       "scripts": {
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+      },
+      "devDependencies": {
+        "eslint-plugin-vue": "latest",
+        "eslint-plugin-jest": "latest",
+        "prettier": "latest",
+        "eslint": "latest",
+        "@nuxtjs/eslint-config-typescript": "latest"
       }
     }
   },
-  "devInstall": [
-    "eslint-plugin-vue",
-    "eslint-plugin-jest",
-    "prettier",
-    "eslint",
-    "@nuxtjs/eslint-config-typescript"
-  ],
   "compatibles": ["nuxt3-plate", "monorepo-plate"]
 }

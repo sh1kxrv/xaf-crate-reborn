@@ -1,6 +1,18 @@
 {
   "name": "SASS Loader",
   "id": "sass-mod",
-  "devInstall": ["sass", "sass-loader"],
-  "compatibles": ["vue3-plate", "nuxt3-plate"]
+  "inject": {
+    "package.json": {
+      "devDependencies": {
+        "sass": "latest",
+        "sass-loader": "latest"
+      }
+    }
+  },
+  "compatibles": [
+    "vue3-plate",
+    "nuxt3-plate",
+    "vue3-plate-lite",
+    "vue3-plate-ts"
+  ]
 }

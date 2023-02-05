@@ -1,0 +1,12 @@
+{
+  "name": "CSS Autoprefixer",
+  "id": "autoprefixer",
+  "inject": {
+    "package.json": {
+      "dependencies": {
+        "autoprefixer": "latest"
+      }
+    }
+  },
+  "compatibles": ["vue3-plate", "vue3-plate-ts", "vue3-plate-lite"]
+}

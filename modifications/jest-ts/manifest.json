@@ -5,10 +5,14 @@
     "package.json": {
       "scripts": {
         "test": "jest"
+      },
+      "devDependencies": {
+        "@types/jest": "latest",
+        "jest": "27.x.x",
+        "ts-jest": "27.1.4"
       }
     }
   },
-  "devInstall": ["@types/jest", "jest@27.x.x", "ts-jest@27.1.4"],
   "install": [],
   "compatibles": ["esbuild-node"],
   "conflicts": ["jest-js-mod", "jest-vue3-mod"]

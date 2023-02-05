@@ -6,9 +6,11 @@
       "scripts": {
         "prettier:check": "prettier --check .",
         "prettier:write": "prettier --write ."
+      },
+      "devDependencies": {
+        "prettier": "latest"
       }
     }
   },
-  "devInstall": ["prettier"],
   "compatibles": ["nuxt3-plate", "monorepo-plate"]
 }

@@ -5,17 +5,17 @@
     "package.json": {
       "scripts": {
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+      },
+      "devDependencies": {
+        "eslint-plugin-vue": "latest",
+        "eslint-plugin-jest": "latest",
+        "prettier": "latest",
+        "eslint": "latest",
+        "@rushstack/eslint-patch": "latest",
+        "@vue/eslint-config-prettier": "latest"
       }
     }
   },
-  "devInstall": [
-    "eslint-plugin-vue",
-    "eslint-plugin-jest",
-    "prettier",
-    "eslint",
-    "@rushstack/eslint-patch",
-    "@vue/eslint-config-prettier"
-  ],
   "compatibles": [
     "vue3-plate-lite",
     "vue3-plate",

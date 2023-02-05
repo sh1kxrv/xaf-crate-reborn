@@ -1,6 +1,7 @@
 {
   "name": "Jest Vue3",
   "id": "jest-vue3-mod",
+  "disabled": true,
   "inject": {
     "package.json": {
       "scripts": {
@@ -22,6 +23,5 @@
     "jest-image-snapshot",
     "jest-serializer-vue"
   ],
-  "install": [],
-  "compatibles": ["vue3-plate-lite", "vue3-plate"]
+  "install": []
 }
