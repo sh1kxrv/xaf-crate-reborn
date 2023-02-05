@@ -13,9 +13,9 @@
     "pinia": "latest"
   },
   "devDependencies": {
+    "@types/node": "latest",
     "@vitejs/plugin-vue": "latest",
     "unplugin-auto-import": "latest",
-    "sass": "latest",
     "vite": "latest"
   }
 }

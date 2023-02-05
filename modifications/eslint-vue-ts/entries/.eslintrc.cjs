@@ -16,10 +16,8 @@ module.exports = {
     node: true,
     browser: true
   },
-  parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
     parser: {
       ts: '@typescript-eslint/parser',
       js: 'espree',

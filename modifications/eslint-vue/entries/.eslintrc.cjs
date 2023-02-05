@@ -15,10 +15,12 @@ module.exports = {
     node: true,
     browser: true
   },
-  parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    parser: {
+      js: 'espree',
+      '<template>': 'espree'
+    }
   },
   rules: {
     'prettier/prettier': [

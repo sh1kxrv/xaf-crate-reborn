@@ -12,7 +12,6 @@
         "@rushstack/eslint-patch": "latest",
         "@vue/eslint-config-prettier": "latest",
         "@vue/eslint-config-typescript": "latest",
-        "vue-eslint-parser": "latest",
         "@typescript-eslint/parser": "latest"
       }
     }

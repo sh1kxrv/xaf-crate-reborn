@@ -11,8 +11,7 @@
         "eslint": "latest",
         "eslint-plugin-vue": "latest",
         "@rushstack/eslint-patch": "latest",
-        "@vue/eslint-config-prettier": "latest",
-        "vue-eslint-parser": "latest"
+        "@vue/eslint-config-prettier": "latest"
       }
     }
   },

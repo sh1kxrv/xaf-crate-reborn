@@ -1,6 +1,6 @@
 {
   "name": "xaf-crate-reborn",
-  "version": "2.9.1",
+  "version": "2.9.3",
   "description": "CLI for creation main-stack application",
   "main": "dist/app.js",
   "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
