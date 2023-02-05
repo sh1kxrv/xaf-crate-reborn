@@ -10,6 +10,7 @@ module.exports = {
     ],
     'vue/no-multiple-template-root': 'warn',
     'no-unused-vars': 'warn',
-    'no-console': 'warn'
+    'no-console': 'warn',
+    'vue/component-api-style': ['error', ['script-setup', 'composition']]
   }
 }
