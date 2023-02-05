@@ -1,21 +1,9 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'IconWrapper',
-  props: {
-    width: {
-      type: String,
-      default: '24',
-    },
-    height: {
-      type: String,
-      default: '24',
-    },
-    color: {
-      type: String,
-      default: 'currentColor',
-    },
-  },
+<script lang="ts" setup>
+import type { IconWrapperProps } from '~/types/props/props.icon-wrapper'
+withDefaults(defineProps<IconWrapperProps>(), {
+  height: '24',
+  width: '24',
+  color: 'currentColor'
 })
 </script>
 

@@ -1,22 +1,15 @@
-<script lang="ts">
-import LayoutDefault from '~/layout/default.vue'
+<script lang="ts" setup>
+import { LayoutDefault } from './layout'
 
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { defineComponent } from 'vue'
-export default defineComponent({
-  components: {
-    LayoutDefault,
-  },
-  setup() {
-    const route = useRoute()
-    const computedLayout = computed(() => {
-      return `layout-${route.meta.layout || 'default'}`
-    })
-    return {
-      computedLayout,
-    }
-  },
+const route = useRoute()
+const layouts = {
+  default: LayoutDefault
+}
+
+const metaLayout = computed(() => route.meta.layout ?? 'default')
+const computedLayout = computed(() => {
+  const layout = metaLayout.value as keyof typeof layouts
+  return layouts[layout]
 })
 </script>
 
