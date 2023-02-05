@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "update": "npx npm-check-updates -u"
   },
@@ -17,9 +17,13 @@
     "pinia": "latest"
   },
   "devDependencies": {
+    "@types/node": "latest",
     "unplugin-auto-import": "latest",
     "vite-plugin-vue-type-imports": "latest",
     "@vitejs/plugin-vue": "latest",
-    "vite": "latest"
+    "vite": "latest",
+    "vue-tsc": "latest",
+    "vite-plugin-checker": "latest",
+    "typescript": "latest"
   }
 }

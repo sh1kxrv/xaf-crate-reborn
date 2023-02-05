@@ -5,20 +5,26 @@ module.exports = {
   root: true,
   extends: [
     'eslint:recommended',
+    'plugin:vue/vue3-essential',
     'plugin:vue/vue3-recommended',
     'plugin:vue/vue3-strongly-recommended',
-    'plugin:vue/vue3-essential',
     '@vue/eslint-config-prettier',
-    '@vue/eslint-config-typescript/recommended'
+    '@vue/eslint-config-typescript'
   ],
   env: {
     'vue/setup-compiler-macros': true,
-    browser: true,
-    amd: true,
-    node: true
+    node: true,
+    browser: true
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2021
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    parser: {
+      ts: '@typescript-eslint/parser',
+      js: 'espree',
+      '<template>': 'espree'
+    }
   },
   rules: {
     'prettier/prettier': [
@@ -36,6 +42,15 @@ module.exports = {
     ],
     'no-unused-vars': 'warn',
     'no-console': 'warn',
-    'vue/component-api-style': ['error', ['script-setup', 'composition']]
+    'vue/component-api-style': ['error', ['script-setup']],
+    'vue/component-definition-name-casing': ['error', 'kebab-case'],
+    'vue/component-name-in-template-casing': [
+      'error',
+      'kebab-case',
+      {
+        registeredComponentsOnly: true,
+        ignores: []
+      }
+    ]
   }
 }

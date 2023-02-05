@@ -4,13 +4,15 @@
   "inject": {
     "package.json": {
       "scripts": {
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix",
+        "build": "yarn lint && vite build"
       },
       "devDependencies": {
         "eslint": "latest",
         "eslint-plugin-vue": "latest",
         "@rushstack/eslint-patch": "latest",
-        "@vue/eslint-config-prettier": "latest"
+        "@vue/eslint-config-prettier": "latest",
+        "vue-eslint-parser": "latest"
       }
     }
   },

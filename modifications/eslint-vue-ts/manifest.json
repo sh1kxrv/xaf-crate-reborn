@@ -1,17 +1,19 @@
 {
-  "name": "Vue 3 ESLint",
-  "id": "vue3-eslint-mod",
+  "name": "Vue 3 ESLint-TS",
+  "id": "vue3-eslint-mod-ts",
   "inject": {
     "package.json": {
       "scripts": {
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix"
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx --fix"
       },
       "devDependencies": {
-        "eslint-plugin-vue": "latest",
         "eslint": "latest",
+        "eslint-plugin-vue": "latest",
         "@rushstack/eslint-patch": "latest",
         "@vue/eslint-config-prettier": "latest",
-        "@vue/eslint-config-typescript": "latest"
+        "@vue/eslint-config-typescript": "latest",
+        "vue-eslint-parser": "latest",
+        "@typescript-eslint/parser": "latest"
       }
     }
   },

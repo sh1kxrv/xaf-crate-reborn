@@ -1,4 +1,4 @@
-import type { Options } from 'unplugin-auto-import'
+import type { Options } from 'unplugin-auto-import/types'
 
 export const AutoImportConfig: Options = {
   // targets to transform

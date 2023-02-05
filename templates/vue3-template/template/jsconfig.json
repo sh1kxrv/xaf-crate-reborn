@@ -4,10 +4,10 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "types": ["@types/jest"],
+    "types": ["@types/node"],
     "jsx": "preserve"
   },
   "files": ["components.d.ts", "auto-imports.d.ts"],
   "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.js", "src/**/*.d.ts", "src/**/*.vue"]
+  "include": ["src/**/*.js", "src/**/*.d.ts", "src/**/*.vue", "config/*.ts"]
 }

@@ -17,6 +17,7 @@
     "@vitejs/plugin-vue": "latest",
     "sass": "latest",
     "vite": "latest",
-    "unplugin-auto-import": "latest"
+    "unplugin-auto-import": "latest",
+    "@types/node": "latest"
   }
 }
