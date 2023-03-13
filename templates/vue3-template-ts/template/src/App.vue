@@ -1,16 +1,14 @@
-<script lang="ts" setup>
-import { LayoutDefault } from './layout'
-
+<script setup lang="ts">
+import { LayoutDefault } from '~/layout'
 const route = useRoute()
 const layouts = {
   default: LayoutDefault
 }
 
 const metaLayout = computed(() => route.meta.layout ?? 'default')
-const computedLayout = computed(() => {
-  const layout = metaLayout.value as keyof typeof layouts
-  return layouts[layout]
-})
+const computedLayout = computed(
+  () => layouts[metaLayout.value as keyof typeof layouts]
+)
 </script>
 
 <template>
