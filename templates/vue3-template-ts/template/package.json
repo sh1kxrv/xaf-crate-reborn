@@ -24,6 +24,7 @@
     "vite": "latest",
     "vue-tsc": "latest",
     "vite-plugin-checker": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "prettier-plugin-organize-attributes": "latest"
   }
 }

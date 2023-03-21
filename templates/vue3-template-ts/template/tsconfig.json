@@ -8,24 +8,19 @@
     "skipLibCheck": true,
     "strict": true,
     "allowJs": true,
+    "checkJs": true,
     "noEmit": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["DOM", "ESNext", "DOM.Iterable", "ScriptHost"],
-    "types": ["@types/node"],
+    "types": ["@types/node", "vite/client"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["./src/*"]
     }
   },
-  "files": ["auto-imports.d.ts", "components.d.ts", "vite.config.ts"],
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/**/*.js",
-    "./config/*.ts"
-  ],
-  "exclude": ["dist", "node_modules"]
+  "include": ["src/**/*", "src/**/*.json"],
+  "exclude": ["node_modules", "dist"],
+  "files": ["components.d.ts", "auto-imports.d.ts"]
 }

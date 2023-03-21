@@ -12,10 +12,10 @@ export default defineConfig({
   plugins: [
     vue(),
     VTI(),
-    AutoImport(AutoImportConfig),
-    VChecker({
-      vueTsc: true
-    })
+    AutoImport(AutoImportConfig)
+    // VChecker({
+    //   vueTsc: true
+    // })
   ],
   resolve: {
     alias: {

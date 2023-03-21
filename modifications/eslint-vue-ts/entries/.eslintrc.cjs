@@ -1,6 +1,3 @@
-/* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
-
 module.exports = {
   root: true,
   extends: [
@@ -8,9 +5,11 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'plugin:vue/vue3-recommended',
     'plugin:vue/vue3-strongly-recommended',
+    'plugin:@typescript-eslint/recommended',
     '@vue/eslint-config-prettier',
-    '@vue/eslint-config-typescript'
+    '@vue/eslint-config-typescript/recommended'
   ],
+  plugins: ['@typescript-eslint'],
   env: {
     'vue/setup-compiler-macros': true,
     node: true,
@@ -19,9 +18,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     parser: {
-      ts: '@typescript-eslint/parser',
       js: 'espree',
-      '<template>': 'espree'
+      '<template>': 'espree',
+      ts: '@typescript-eslint/parser'
     }
   },
   rules: {
@@ -38,7 +37,6 @@ module.exports = {
         ignores: []
       }
     ],
-    'no-unused-vars': 'warn',
     'no-console': 'warn',
     'vue/component-api-style': ['error', ['script-setup']],
     'vue/component-definition-name-casing': ['error', 'kebab-case'],
@@ -49,6 +47,43 @@ module.exports = {
         registeredComponentsOnly: true,
         ignores: []
       }
-    ]
+    ],
+    'vue/prop-name-casing': ['error', 'camelCase'],
+    'vue/custom-event-name-casing': [
+      'error',
+      'kebab-case',
+      {
+        ignores: []
+      }
+    ],
+    'vue/attribute-hyphenation': [
+      'error',
+      'always',
+      {
+        ignore: []
+      }
+    ],
+    'vue/attributes-order': [
+      'warn',
+      {
+        order: [
+          'DEFINITION',
+          'OTHER_ATTR',
+          'LIST_RENDERING',
+          'CONDITIONALS',
+          'RENDER_MODIFIERS',
+          'GLOBAL',
+          ['UNIQUE', 'SLOT'],
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'EVENTS',
+          'CONTENT'
+        ],
+        alphabetical: false
+      }
+    ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error'
+    // '@typescript-eslint/explicit-function-return-type': 'error'
   }
 }
