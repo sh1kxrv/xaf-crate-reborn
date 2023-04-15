@@ -1,23 +1,33 @@
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
-
-import vue from '@vitejs/plugin-vue'
-import VTI from 'vite-plugin-vue-type-imports' // Vue Type Imports
-import AutoImport from 'unplugin-auto-import/vite'
-import VChecker from 'vite-plugin-checker'
 import { AutoImportConfig } from './config/config.auto-import'
+import { VitePluginFonts } from 'vite-plugin-fonts'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import VueMacros from 'unplugin-vue-macros/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    VTI(),
-    AutoImport(AutoImportConfig)
-    // VChecker({
-    //   vueTsc: true
-    // })
+    VueMacros({
+      plugins: {
+        vue: vue({
+          reactivityTransform: true
+        })
+      }
+    }),
+    AutoImport(AutoImportConfig),
+    VitePluginFonts({
+      google: {
+        families: [
+          { name: 'Inter', styles: 'wght@200;300;400;500;600;700;800' }
+        ]
+      }
+    })
   ],
   resolve: {
+    preserveSymlinks: true,
+    dedupe: ['vue', 'vue-router'],
     alias: {
       '~': fileURLToPath(new URL('./src', import.meta.url))
     }
@@ -26,9 +36,9 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import '~/assets/styles/variables';
-          @import '~/assets/styles/mixins';
-          @import '~/assets/styles/typography';
+          @import '~/assets/styles/variables.scss';
+          @import '~/assets/styles/general.scss';
+          @import '~/assets/styles/topography.scss';
         `
       }
     }

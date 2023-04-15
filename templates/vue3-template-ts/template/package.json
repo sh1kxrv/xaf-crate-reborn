@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "update": "npx npm-check-updates -u"
   },
@@ -19,11 +19,9 @@
   "devDependencies": {
     "@types/node": "latest",
     "unplugin-auto-import": "latest",
-    "vite-plugin-vue-type-imports": "latest",
+    "unplugin-vue-macros": "latest",
     "@vitejs/plugin-vue": "latest",
     "vite": "latest",
-    "vue-tsc": "latest",
-    "vite-plugin-checker": "latest",
     "typescript": "latest",
     "prettier-plugin-organize-attributes": "latest"
   }

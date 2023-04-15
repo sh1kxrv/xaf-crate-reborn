@@ -1,9 +1,0 @@
-{
-  "mods": [
-    "husky-mod",
-    "jest-vue3-mod",
-    "vue3-middleware-mod"
-  ],
-  "project_name": "mi-bear-frontend",
-  "template_id": "vue3-plate"
-}

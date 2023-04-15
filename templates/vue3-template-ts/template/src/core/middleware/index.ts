@@ -6,10 +6,10 @@ import type {
   RouteRecordName
 } from 'vue-router'
 
-class MiddlewareSupport {
+export class MiddlewareController {
   constructor(
     private readonly router: Router,
-    private readonly global: Middleware[]
+    private readonly global: Middleware[] = []
   ) {}
   async hook(
     to: RouteLocationNormalized,
@@ -35,10 +35,4 @@ class MiddlewareSupport {
   }
 }
 
-export function hookMiddleware(router: Router, ...global: Middleware[]) {
-  const middleware = new MiddlewareSupport(router, global)
-  router.beforeEach(async (to, from, next) => {
-    if (!to.meta.middleware && global.length === 0) return next()
-    await middleware.hook(to, from, next)
-  })
-}
+export * from './vue/vue.hook-router'

@@ -1,26 +1,34 @@
 {
   "compilerOptions": {
-    "composite": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "skipLibCheck": true,
     "strict": true,
     "allowJs": true,
-    "checkJs": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["DOM", "ESNext", "DOM.Iterable", "ScriptHost"],
-    "types": ["@types/node", "vite/client"],
+    "types": ["node", "vite/client", "unplugin-vue-macros/macros-global"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "src/**/*.json"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
-  "files": ["components.d.ts", "auto-imports.d.ts"]
+  "files": ["global.d.ts", "auto-imports.d.ts", "vue-shims.d.ts"],
+  "vueCompilerOptions": {
+    "plugins": [
+      "@vue-macros/volar/define-options",
+      "@vue-macros/volar/define-models",
+      "@vue-macros/volar/define-slots",
+      "@vue-macros/volar/define-props",
+      "@vue-macros/volar/define-props-refs",
+      "@vue-macros/volar/export-props",
+      "@vue-macros/volar/short-vmodel"
+    ]
+  }
 }
