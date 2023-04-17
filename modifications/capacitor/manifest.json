@@ -1,0 +1,16 @@
+{
+  "name": "Capacitor",
+  "id": "capacitor",
+  "inject": {
+    "package.json": {
+      "devDependencies": {
+        "@capacitor/cli": "latest"
+      },
+      "dependencies": {
+        "@capacitor/core": "latest",
+        "@capacitor/android": "latest"
+      }
+    }
+  },
+  "compatibles": ["vue3-plate-ts", "vue3-electron-ts", "vue3-plate"]
+}
