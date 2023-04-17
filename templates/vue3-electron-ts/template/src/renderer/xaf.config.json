@@ -1,0 +1,10 @@
+{
+  "mods": [
+    "autoprefixer",
+    "vue3-eslint-mod-ts",
+    "vue3-prettier-mod",
+    "sass-mod"
+  ],
+  "project_name": "roadmap",
+  "template_id": "vue3-plate-ts"
+}
