@@ -1,10 +1,9 @@
 {
   "name": "xaf-crate-reborn",
-  "version": "2.9.8",
+  "version": "3.0.1",
   "description": "CLI for creation main-stack application",
   "main": "dist/app.js",
   "repository": "https://github.com/xafxafxaf/xaf-crate-reborn.git",
-  "author": "Егор <ItsAwware@yandex.ru>",
   "license": "MIT",
   "scripts": {
     "dev": "node scripts/serve.js",
