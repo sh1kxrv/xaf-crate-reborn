@@ -38,6 +38,7 @@
     "vue": "latest",
     "autoprefixer": "latest",
     "pinia": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "@vueuse/core": "latest"
   }
 }

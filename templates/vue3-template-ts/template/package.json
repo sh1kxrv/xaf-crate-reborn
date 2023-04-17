@@ -14,7 +14,8 @@
   "dependencies": {
     "vue": "latest",
     "vue-router": "latest",
-    "pinia": "latest"
+    "pinia": "latest",
+    "@vueuse/core": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",

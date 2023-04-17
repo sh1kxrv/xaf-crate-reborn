@@ -4,4 +4,4 @@
 - npx cap add android -> Android
 - npx cap sync
 - npx cap open android
-- npx cap run android
+- npx cap run android ->> npx cap run android --livereload --external
