@@ -19,7 +19,7 @@
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
-  "files": ["global.d.ts", "auto-imports.d.ts", "vue-shims.d.ts"],
+  "files": ["global.d.ts", "auto-imports.d.ts", "vue-shim.d.ts"],
   "vueCompilerOptions": {
     "plugins": [
       "@vue-macros/volar/define-options",

@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 import { AutoImportConfig } from './config/config.auto-import'
-import { VitePluginFonts } from 'vite-plugin-fonts'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
@@ -16,14 +15,7 @@ export default defineConfig({
         })
       }
     }),
-    AutoImport(AutoImportConfig),
-    VitePluginFonts({
-      google: {
-        families: [
-          { name: 'Inter', styles: 'wght@200;300;400;500;600;700;800' }
-        ]
-      }
-    })
+    AutoImport(AutoImportConfig)
   ],
   resolve: {
     preserveSymlinks: true,
@@ -37,8 +29,7 @@ export default defineConfig({
       scss: {
         additionalData: `
           @import '~/assets/styles/variables.scss';
-          @import '~/assets/styles/general.scss';
-          @import '~/assets/styles/topography.scss';
+          @import '~/assets/styles/typography.scss';
         `
       }
     }
