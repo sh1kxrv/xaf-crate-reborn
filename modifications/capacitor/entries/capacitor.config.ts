@@ -2,8 +2,8 @@ import { CapacitorConfig } from '@capacitor/cli'
 import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard'
 
 const config: CapacitorConfig = {
-  appId: 'com.yourapp.app',
-  appName: 'app',
+  appId: 'com.example.app',
+  appName: 'test-app',
   webDir: 'dist',
   bundledWebRuntime: false,
   plugins: {
@@ -13,7 +13,7 @@ const config: CapacitorConfig = {
       resizeOnFullScreen: false
     },
     SplashScreen: {
-      launchAutoHide: false,
+      launchAutoHide: true,
       backgroundColor: '#ffffffff',
       splashFullScreen: true,
       splashImmersive: true
@@ -21,10 +21,6 @@ const config: CapacitorConfig = {
     PushNotifications: {
       presentationOptions: ['badge', 'sound', 'alert']
     }
-  },
-  ios: {
-    scrollEnabled: false,
-    allowsLinkPreview: false
   }
 }
 

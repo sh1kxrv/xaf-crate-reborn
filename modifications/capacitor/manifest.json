@@ -12,6 +12,13 @@
         "@capacitor/keyboard": "latest",
         "@capacitor/splash-screen": "latest",
         "@capacitor/storage": "latest"
+      },
+      "scripts": {
+        "cap:init": "npx cap init",
+        "cap:sync": "npx cap sync",
+        "cap:android:add": "npx cap add android",
+        "cap:android:open": "npx cap open android",
+        "cap:android:dev": "npx cap run android --livereload --external"
       }
     }
   },
