@@ -22,12 +22,15 @@ export class MiddlewareController {
       const resultPipeline = await middleware({
         to,
         from,
-        redirect: (name: RouteRecordName) => {
+        next: (name: RouteRecordName) => {
           redirected = true
           next({ name })
         },
         forceRedirect: (url: Location) => (window.location = url),
-        next: (url: string) => this.router.push(url)
+        redirect: (url: string) => {
+          redirected = true
+          this.router.push(url)
+        }
       })
       if (resultPipeline === false) break
     }

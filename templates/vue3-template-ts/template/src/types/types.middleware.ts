@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized } from 'vue-router'
-type Next = (name: string) => void
+type Next = (name?: string) => void
 type ForceRedirect = (url: Location) => void
 type Redirect = (url: string) => void
 export interface MiddlewareOptions {
