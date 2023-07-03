@@ -1,0 +1,3 @@
+@mixin tgi-58($font-weight: 400) {
+  @include create-font(5.8rem, $font-weight, 7.8rem);
+}

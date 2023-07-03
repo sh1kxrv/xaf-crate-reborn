@@ -4,7 +4,6 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "types": ["@types/node"],
     "jsx": "preserve"
   },
   "files": ["components.d.ts", "auto-imports.d.ts"],

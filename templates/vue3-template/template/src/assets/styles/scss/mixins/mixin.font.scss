@@ -1,0 +1,15 @@
+@mixin create-font(
+  $font-size: 1.6rem,
+  $font-weight: normal,
+  $line-height: normal,
+  $text-transform: none,
+  $letter-space: normal,
+  $font-family: 'Inter'
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-space;
+  font-family: #{$font-family}, Tahoma, Arial, Helvetica, sans-serif;
+  text-transform: $text-transform;
+}

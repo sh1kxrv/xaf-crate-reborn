@@ -1,23 +1,34 @@
 {
-  "name": "vue3-xaf-template",
+  "name": "poizy-frontend",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "yarn lint && vite build",
     "preview": "vite preview",
-    "update": "npx npm-check-updates -u"
+    "update": "npx npm-check-updates -u",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
   },
   "dependencies": {
+    "autoprefixer": "latest",
+    "pinia": "latest",
     "vue": "latest",
-    "vue-router": "latest",
-    "pinia": "latest"
+    "vue-router": "latest"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "latest",
+    "@types/node": "latest",
     "@vitejs/plugin-vue": "latest",
+    "@vue/eslint-config-prettier": "latest",
+    "eslint": "latest",
+    "eslint-plugin-vue": "latest",
+    "prettier": "latest",
     "sass": "latest",
-    "vite": "latest",
+    "sass-loader": "latest",
     "unplugin-auto-import": "latest",
-    "@types/node": "latest"
+    "vite": "latest",
+    "vite-plugin-top-level-await": "^1.3.1"
   }
 }

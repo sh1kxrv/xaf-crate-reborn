@@ -1,0 +1,22 @@
+:root {
+  --safe-area-top: env(safe-area-inset-top, 44px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 34px);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $primary-dark;
+  background-color: #f5f8fa;
+  font-family: 'Inter';
+}
+
+.app-modals,
+.app-toasts {
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}

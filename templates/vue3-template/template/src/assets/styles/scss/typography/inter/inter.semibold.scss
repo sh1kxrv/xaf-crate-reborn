@@ -1,0 +1,23 @@
+@mixin tgi-14-semibold {
+  @include create-font(1.4rem, 600, 1.6rem);
+}
+
+@mixin tgi-15-semibold {
+  @include create-font(1.5rem, 600, 1.8rem);
+}
+
+@mixin tgi-16-semibold {
+  @include create-font(1.6rem, 600, 2rem);
+}
+
+@mixin tgi-18-semibold {
+  @include create-font(1.8rem, 600, 2.4rem);
+}
+
+@mixin tgi-20-semibold {
+  @include create-font(2rem, 600, 2.6rem);
+}
+
+@mixin tgi-18-semibold {
+  @include create-font(1.8rem, 600, 2.4rem);
+}

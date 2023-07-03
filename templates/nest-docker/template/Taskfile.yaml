@@ -1,0 +1,9 @@
+version: 3
+
+tasks:
+  start-dev:
+    cmds:
+      - docker-compose -f docker-compose.dev.yml up --build
+  start-prod:
+    cmds:
+      - docker-compose -f docker-compose.yml up --build

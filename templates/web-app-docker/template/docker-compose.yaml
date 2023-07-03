@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  webapp:
+    build: ./app
+    volumes:
+      - webapp:/usr/src/app
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - webapp:/usr/src/app
+    env_file:
+      - .env
+    ports:
+      - 80:80
+    depends_on:
+      - webapp
+
+volumes:
+  webapp:

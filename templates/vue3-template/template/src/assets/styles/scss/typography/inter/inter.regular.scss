@@ -1,0 +1,11 @@
+@mixin tgi-16-reg {
+  @include create-font(1.6rem, 400, 1.8rem);
+}
+
+@mixin tgi-14-reg {
+  @include create-font(1.4rem, 400, 1.6rem);
+}
+
+@mixin tgi-12-reg {
+  @include create-font(1.2rem, 400, 1.4rem);
+}

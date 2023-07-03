@@ -1,0 +1,6 @@
+.env
+database.env
+node_modules
+dist
+
+.database

@@ -1,0 +1,13 @@
+FROM node:18-alpine
+
+ENV MODE DEV
+WORKDIR /usr/src/app
+
+COPY ./package.json /usr/src/app
+RUN yarn install --check-files
+
+COPY . .
+
+RUN yarn build
+
+CMD ["yarn", "start"]

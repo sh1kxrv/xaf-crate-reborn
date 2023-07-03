@@ -1,0 +1,15 @@
+@mixin tgi-58-bold {
+  @include create-font(5.8rem, 700, 7.8rem);
+}
+
+@mixin tgi-28-bold {
+  @include create-font(2.8rem, 700, 3.3rem);
+}
+
+@mixin tgi-20-bold {
+  @include create-font(2rem, 700, 2.4rem);
+}
+
+@mixin tgi-16-bold {
+  @include create-font(1.6rem, 700, 2.4rem);
+}

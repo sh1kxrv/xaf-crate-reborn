@@ -1,8 +1,8 @@
 import View from './view.vue'
-export default [
+export const HomeView = [
   {
     path: '/',
     name: 'Home',
-    component: View,
-  },
+    component: View
+  }
 ]

@@ -5,8 +5,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import router from './router'
-import { hook } from '~/core/middleware'
-hook(router)
 
 const pinia = createPinia()
 
@@ -15,4 +13,6 @@ app.use(router).use(pinia)
 
 app.component('icon-wrapper', IconWrapper)
 
-router.isReady().then(() => app.mount('#app'))
+await router.isReady()
+
+app.mount('#app')
